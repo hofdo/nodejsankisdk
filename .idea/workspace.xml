@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="" />
+    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +16,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -58,12 +59,24 @@
       <option name="presentableId" value="Default" />
       <updated>1603806383224</updated>
       <workItem from="1603806384317" duration="8911000" />
-      <workItem from="1603891426371" duration="1950000" />
+      <workItem from="1603891426371" duration="2127000" />
     </task>
+    <task id="LOCAL-00001" summary="Test">
+      <created>1603893410989</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603893410989</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1696" height="400" key="GridCell.Tab.0.bottom" timestamp="1603817183427">
@@ -86,5 +99,13 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="361" y="348" key="SettingsEditor/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603814440348" />
+    <state x="452" y="436" key="Vcs.Push.Dialog.v2" timestamp="1603893420792">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="452" y="436" key="Vcs.Push.Dialog.v2/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603893420792" />
+    <state x="677" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603893465569">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="677" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603893465569" />
   </component>
 </project>

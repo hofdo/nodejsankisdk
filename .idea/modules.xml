@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/nobletest.iml" filepath="$PROJECT_DIR$/.idea/nobletest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/noblesdk.iml" filepath="$PROJECT_DIR$/.idea/noblesdk.iml" />
     </modules>
   </component>
 </project>

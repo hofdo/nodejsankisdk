@@ -1,5 +1,5 @@
 {
-  "name": "nobletest",
+  "name": "noblesdk",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,9 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "noble": "^1.9.1",
-    "noble-uwp": "^0.6.2"
-  }
+  "license": "ISC"
 }
