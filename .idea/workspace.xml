@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Test" />
+    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Test">
+      <change beforePath="$PROJECT_DIR$/node_modules/buffer/AUTHORS.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/buffer/AUTHORS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/buffer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/buffer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/buffer/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/buffer/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/buffer/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/buffer/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/buffer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/buffer/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/buffer/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/buffer/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ieee754/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ieee754/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ieee754/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ieee754/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ieee754/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ieee754/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ieee754/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ieee754/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ieee754/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +51,7 @@
     <property name="javascript.nodejs.core.library.typings.version" value="12.19.0" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -60,6 +74,7 @@
       <updated>1603806383224</updated>
       <workItem from="1603806384317" duration="8911000" />
       <workItem from="1603891426371" duration="2127000" />
+      <workItem from="1603936315984" duration="288000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1603893410989</created>
@@ -95,9 +110,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1696" height="400" key="GridCell.Tab.0.right/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603817183427" />
-    <state x="361" y="348" key="SettingsEditor" timestamp="1603814440348">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="157" y="239" key="SettingsEditor" timestamp="1603936604598">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state x="157" y="239" key="SettingsEditor/0.0.1500.960@0.0.1500.960" timestamp="1603936604598" />
     <state x="361" y="348" key="SettingsEditor/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603814440348" />
     <state x="452" y="436" key="Vcs.Push.Dialog.v2" timestamp="1603893420792">
       <screen x="0" y="0" width="3440" height="1400" />

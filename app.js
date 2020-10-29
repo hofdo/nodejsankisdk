@@ -1,4 +1,4 @@
-let noble = require('noble');
+let noble = require('noble-uwp');
 
 noble.on('stateChange', function(state) {
     if (state === 'poweredOn') {
