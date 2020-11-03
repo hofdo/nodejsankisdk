@@ -18,7 +18,9 @@ noble.on('discover', function(device) {
         'vehicle_id': device.address,
         'peripheral': device
     }
-    console.log(device.advertisement.serviceUuids);
+    console.log(util.format("SCAN;%s;%s\n",
+        device.id,
+        device.advertisement.manufacturerData.toString('hex')));
 });
 
 
