@@ -28,16 +28,20 @@ function connect(vehicle) {
                     console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
                 });
                 console.log("connect success");
+                setSpeed(vehicle, 600);
+                setTimeout(function (){
+                    setSpeed(vehicle, 0);
+                }, 10000)
             }
         );
     });
 }
 
-function setSpeed(device) {
+function setSpeed(device, speed) {
     let message = new Buffer(7);
     message.writeUInt8(0x06, 0);
     message.writeUInt8(0x24, 1);
-    message.writeInt16LE(500, 2);
+    message.writeInt16LE(speed, 2);
     message.writeInt16LE(0, 4);
     device.writer.write(message, true);
 }
@@ -49,8 +53,7 @@ function discover (device) {
         'peripheral': device
     }
     //console.log(util.format("SCAN;%s;%s\n", device.id, device.advertisement.manufacturerData.toString('hex')));
-    connect(noble._peripherals[device.id]);
-    setSpeed(noble._peripherals[device.id]);
+    connect(noble._periphecrals[device.id]);
 }
 
 noble.on('discover', discover);

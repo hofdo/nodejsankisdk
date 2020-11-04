@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Update app.js">
+      <change afterPath="$PROJECT_DIR$/app_2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
@@ -56,12 +57,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="9.11.2" />
     <property name="javascript.nodejs.core.library.typings.version" value="9.6.61" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.app.js">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hofma\WebstormProjects\nodejsnobleankisdk" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.app_2.js">
     <configuration name="ServerTest.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/ServerTest.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -71,11 +78,15 @@
     <configuration name="advertisement-discovery.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/node_modules/noble/examples/advertisement-discovery.js" working-dir="$PROJECT_DIR$/node_modules/noble/examples">
       <method v="2" />
     </configuration>
+    <configuration name="app_2.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app_2.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.app_2.js" />
         <item itemvalue="Node.js.app.js" />
         <item itemvalue="Node.js.ServerTest.js" />
         <item itemvalue="Node.js.Server.js" />
@@ -95,7 +106,7 @@
       <workItem from="1603891426371" duration="2127000" />
       <workItem from="1603936315984" duration="4769000" />
       <workItem from="1603998465566" duration="19751000" />
-      <workItem from="1604354134063" duration="13954000" />
+      <workItem from="1604354134063" duration="17694000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1603893410989</created>
@@ -139,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604416126767</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update app.js">
+      <created>1604437187511</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604437187511</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,25 +183,25 @@
     <option name="LAST_COMMIT_MESSAGE" value="Update app.js" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1480" height="240" key="GridCell.Tab.0.bottom" timestamp="1604437146392">
+    <state width="1480" height="240" key="GridCell.Tab.0.bottom" timestamp="1604449354695">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state width="1480" height="240" key="GridCell.Tab.0.bottom/0.0.1500.960@0.0.1500.960" timestamp="1604437146392" />
+    <state width="1480" height="240" key="GridCell.Tab.0.bottom/0.0.1500.960@0.0.1500.960" timestamp="1604449354695" />
     <state width="1696" height="400" key="GridCell.Tab.0.bottom/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603817183427" />
-    <state width="1480" height="240" key="GridCell.Tab.0.center" timestamp="1604437146392">
+    <state width="1480" height="240" key="GridCell.Tab.0.center" timestamp="1604449354695">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state width="1480" height="240" key="GridCell.Tab.0.center/0.0.1500.960@0.0.1500.960" timestamp="1604437146392" />
+    <state width="1480" height="240" key="GridCell.Tab.0.center/0.0.1500.960@0.0.1500.960" timestamp="1604449354695" />
     <state width="1696" height="400" key="GridCell.Tab.0.center/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603817183427" />
-    <state width="1480" height="240" key="GridCell.Tab.0.left" timestamp="1604437146392">
+    <state width="1480" height="240" key="GridCell.Tab.0.left" timestamp="1604449354695">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state width="1480" height="240" key="GridCell.Tab.0.left/0.0.1500.960@0.0.1500.960" timestamp="1604437146392" />
+    <state width="1480" height="240" key="GridCell.Tab.0.left/0.0.1500.960@0.0.1500.960" timestamp="1604449354695" />
     <state width="1696" height="400" key="GridCell.Tab.0.left/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603817183427" />
-    <state width="1480" height="240" key="GridCell.Tab.0.right" timestamp="1604437146392">
+    <state width="1480" height="240" key="GridCell.Tab.0.right" timestamp="1604449354695">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state width="1480" height="240" key="GridCell.Tab.0.right/0.0.1500.960@0.0.1500.960" timestamp="1604437146392" />
+    <state width="1480" height="240" key="GridCell.Tab.0.right/0.0.1500.960@0.0.1500.960" timestamp="1604449354695" />
     <state width="1696" height="400" key="GridCell.Tab.0.right/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603817183427" />
     <state width="1480" height="316" key="GridCell.Tab.1.bottom" timestamp="1604417645551">
       <screen x="0" y="0" width="1500" height="960" />
@@ -238,10 +256,10 @@
     </state>
     <state x="157" y="239" key="SettingsEditor/0.0.1500.960@0.0.1500.960" timestamp="1604018312022" />
     <state x="361" y="348" key="SettingsEditor/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603814440348" />
-    <state x="197" y="299" key="Vcs.Push.Dialog.v2" timestamp="1604416129636">
+    <state x="197" y="299" key="Vcs.Push.Dialog.v2" timestamp="1604437206980">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="197" y="299" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1604416129636" />
+    <state x="197" y="299" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1604437206980" />
     <state x="452" y="436" key="Vcs.Push.Dialog.v2/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603893420792" />
     <state x="458" y="215" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603936929351">
       <screen x="0" y="0" width="1500" height="960" />
