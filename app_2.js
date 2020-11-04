@@ -5,6 +5,7 @@ let util = require('util')
 let vehicles = [];
 
 let args = process.argv;
+console.log(args.toString());
 
 switch (args[0]) {
     case 'SCAN':
