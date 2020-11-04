@@ -4,7 +4,7 @@ let util = require('util')
 
 let vehicles = [];
 
-let args = process.argv;
+let args = process.argv.slice(2);
 console.log(args.toString());
 
 switch (args[0]) {
