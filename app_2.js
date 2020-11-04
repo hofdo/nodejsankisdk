@@ -27,5 +27,6 @@ noble.on('discovery', function (device){
         'vehicle_uuid': device.advertisement.manufacturerData.toString('hex'),
         'peripheral': device
     }
+    console.log("happend");
 });
 
