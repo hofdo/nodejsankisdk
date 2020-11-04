@@ -13,6 +13,7 @@ setTimeout(function (){
 
 function connect(vehicle) {
     vehicle.connect(function(error) {
+        console.log(vehicle);
         vehicle.discoverSomeServicesAndCharacteristics(
             ["be15beef6186407e83810bd89c4d8df4"],
             ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"],
@@ -28,10 +29,6 @@ function connect(vehicle) {
                     console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
                 });
                 console.log("connect success");
-                setSpeed(vehicle, 600);
-                setTimeout(function (){
-                    setSpeed(vehicle, 0);
-                }, 10000)
             }
         );
     });
@@ -53,7 +50,7 @@ function discover (device) {
         'peripheral': device
     }
     //console.log(util.format("SCAN;%s;%s\n", device.id, device.advertisement.manufacturerData.toString('hex')));
-    connect(noble._periphecrals[device.id]);
+    connect(noble._peripherals[device.id]);
 }
 
 noble.on('discover', discover);
