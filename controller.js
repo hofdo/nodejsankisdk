@@ -1,5 +1,6 @@
 //let noble = require('noble');
-let noble = require('noble-uwp');
+//let noble = require('noble-uwp');
+let noble = require('@abandonware/noble');
 let mqtt = require('mqtt')
 let url = require('url');
 let readline = require('readline');
@@ -9,8 +10,9 @@ let message = null;
 let device_id = null;
 let address = '192.168.1.160:1883';
 var host = url.parse(address, true)
-/*
-let client = mqtt.connect(address, {
+
+
+let client = mqtt.connect('mqtt://localhost', {
     clientId: 'controller',
     protocolId: 'MQIsdp',
     protocolVersion: 3
@@ -25,7 +27,7 @@ client.on("message", function (topic, message) {
     console.log('Topic: ' + topic + ' Msg: ' + message.toString());
 })
 
- */
+
 
 function connect(device_id){
     let vehicle = noble._peripherals[device_id]
