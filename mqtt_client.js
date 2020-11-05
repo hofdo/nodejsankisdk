@@ -1,7 +1,7 @@
 let mqtt = require('mqtt');
 let readline = require('readline');
 
-let client = mqtt.connect('mqtt://localhost', {
+let client = mqtt.connect('mqtt://192.168.1.160', {
     clientId: 'controller',
     protocolId: 'MQIsdp',
     protocolVersion: 3
@@ -64,14 +64,12 @@ cli.on('line', function (cmd){
             client.publish('command/change_light', JSON.stringify({
                 command: 'change_light',
                 target: args[1],
-                offset: args[2]
             }))
             break;
         case 'change_light_pattern':
             client.publish('command/change_light', JSON.stringify({
                 command: 'change_light',
                 target: args[1],
-                offset: args[2]
             }))
             break;
         case 'exit':
