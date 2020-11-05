@@ -3,6 +3,8 @@ let readline = require('readline');
 
 let client = mqtt.connect('mqtt://localhost', {
     clientId: 'mqtt_client',
+    protocolId: 'MQIsdp',
+    protocolVersion: 3,
     clean: true
 });
 
