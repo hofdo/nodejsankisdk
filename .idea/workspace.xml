@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Update app.js">
-      <change afterPath="$PROJECT_DIR$/app_2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mqtt_client.js" beforeDir="false" afterPath="$PROJECT_DIR$/mqtt_client.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,14 +67,11 @@
       <recent name="C:\Users\hofma\WebstormProjects\nodejsnobleankisdk" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.app_2.js">
+  <component name="RunManager" selected="Node.js.controller.js">
     <configuration name="ServerTest.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/ServerTest.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="Server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Server.js" working-dir="$PROJECT_DIR$">
-      <method v="2" />
-    </configuration>
-    <configuration name="advertisement-discovery.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/node_modules/noble/examples/advertisement-discovery.js" working-dir="$PROJECT_DIR$/node_modules/noble/examples">
       <method v="2" />
     </configuration>
     <configuration name="app_2.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app_2.js" working-dir="$PROJECT_DIR$">
@@ -84,13 +80,16 @@
     <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
+    <configuration name="controller.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/controller.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.controller.js" />
         <item itemvalue="Node.js.app_2.js" />
         <item itemvalue="Node.js.app.js" />
         <item itemvalue="Node.js.ServerTest.js" />
         <item itemvalue="Node.js.Server.js" />
-        <item itemvalue="Node.js.advertisement-discovery.js" />
       </list>
     </recent_temporary>
   </component>
@@ -107,6 +106,7 @@
       <workItem from="1603936315984" duration="4769000" />
       <workItem from="1603998465566" duration="19751000" />
       <workItem from="1604354134063" duration="17694000" />
+      <workItem from="1604615408794" duration="2263000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1603893410989</created>

@@ -1,7 +1,7 @@
 let mqtt = require('mqtt');
 let readline = require('readline');
 
-let client = mqtt.connect('mqtt://192.168.1.160', {
+let client = mqtt.connect('mqtt://localhost', {
     clientId: 'mqtt_client',
     clean: true
 });
