@@ -1,11 +1,31 @@
 //let noble = require('noble');
 let noble = require('noble-uwp');
-let util = require('util')
-let readline = require('readline')
+let mqtt = require('mqtt')
+let url = require('url');
+let readline = require('readline');
 
 let vehicles = new Map();
 let message = null;
 let device_id = null;
+let address = '192.168.1.160:1883';
+var host = url.parse(address, true)
+/*
+let client = mqtt.connect(address, {
+    clientId: 'controller',
+    protocolId: 'MQIsdp',
+    protocolVersion: 3
+});
+
+
+client.on("connect", function () {
+    client.subscribe('command/#')
+})
+
+client.on("message", function (topic, message) {
+    console.log('Topic: ' + topic + ' Msg: ' + message.toString());
+})
+
+ */
 
 function connect(device_id){
     let vehicle = noble._peripherals[device_id]
@@ -60,14 +80,49 @@ function changeLane(device_id, offset){
     vehicles[device_id]['writer'].write(message);
 }
 
+function changeLights(device_id){
+    message = new Buffer(3);
+    message.writeUInt8(0x02, 0);
+    message.writeUInt8(0x1d, 1);
+    message.writeUInt8(140, 2);
+    vehicles[device_id]['writer'].write(message);
+}
+
+function changeLightPattern(device_id){
+    message = new Buffer(8);
+    message.writeUInt8(0x07, 0);
+    message.writeUInt8(0x33, 1);
+    message.writeUInt8(5, 2);
+    message.writeUInt8(1, 3);
+    message.writeUInt8(1, 4);
+    message.writeUInt8(5, 5);
+    message.writeInt16LE(0,6)
+    vehicles[device_id]['writer'].write(message);
+}
+
+function ping(device_id){
+    message = new Buffer(2);
+    message.writeUInt8(0x01, 0);
+    message.writeUInt8(0x1a,1);
+    vehicles[device_id]['writer'].write(message);
+}
+
+function requestBatteryLevel(device_id){
+    message = new Buffer(2);
+    message.writeUInt8(0x01, 0);
+    message.writeUInt8(0x18,1);
+    vehicles[device_id]['writer'].write(message);
+}
+
+function requestVersion(device_id){
+    message = new Buffer(2);
+    message.writeUInt8(0x01, 0);
+    message.writeUInt8(0x16,1);
+    vehicles[device_id]['writer'].write(message);
+}
+
+
 noble.on('discover', function (device){
-    /*
-    vehicles = {
-        'vehicle_id': device.id,
-        'vehicle_uuid': device.advertisement.manufacturerData.toString('hex'),
-        'device': noble._peripherals[device.id]
-    }
-     */
     vehicles[device.id] = {
         'id': device.id,
         'device': noble._peripherals[device.id],
@@ -77,6 +132,8 @@ noble.on('discover', function (device){
     }
     console.log("Scanned: " + device.id);
 });
+
+
 
 var cli = readline.createInterface(({
     input: process.stdin,
@@ -129,12 +186,37 @@ cli.on('line', function (cmd){
             break;
         case 'change_lane':
             if (args[1] === 'global'){
-
+                let offset = args[2];
+                Object.keys(vehicles).forEach(function (key){
+                    changeLane(key, offset);
+                })
             }
             else {
                 device_id = args[1];
                 let offset = args[2];
-
+                changeLane(device_id, offset);
+            }
+            break;
+        case 'changelight':
+            if (args[1] === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    changeLights(key);
+                })
+            }
+            else {
+                device_id = args[1];
+                changeLights(device_id);
+            }
+            break;
+        case 'changeightpattern':
+            if (args[1] === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    changeLightPattern(key);
+                })
+            }
+            else {
+                device_id = args[1];
+                changeLightPattern(device_id);
             }
             break;
         case 'exit':
@@ -146,4 +228,6 @@ cli.on('line', function (cmd){
             break;
     }
 });
+
+
 
