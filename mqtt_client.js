@@ -7,7 +7,7 @@ let client = mqtt.connect('mqtt://localhost', {
     protocolVersion: 3
 });
 
-client.on('connect', function (){
+client.once('connect', function (){
     console.log("Connected: " + client.connected);
 });
 
