@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Test Run MQTT">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mqtt_client.js" beforeDir="false" afterPath="$PROJECT_DIR$/mqtt_client.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,7 @@
       <workItem from="1603936315984" duration="4769000" />
       <workItem from="1603998465566" duration="19751000" />
       <workItem from="1604354134063" duration="17694000" />
-      <workItem from="1604615408794" duration="4870000" />
+      <workItem from="1604615408794" duration="5195000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1603893410989</created>
@@ -193,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604620344373</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Test Run MQTT">
+      <created>1604620960074</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1604620960074</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,10 +298,10 @@
     </state>
     <state x="157" y="239" key="SettingsEditor/0.0.1500.960@0.0.1500.960" timestamp="1604018312022" />
     <state x="361" y="348" key="SettingsEditor/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603814440348" />
-    <state x="197" y="299" key="Vcs.Push.Dialog.v2" timestamp="1604620347212">
+    <state x="197" y="299" key="Vcs.Push.Dialog.v2" timestamp="1604620963032">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="197" y="299" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1604620347212" />
+    <state x="197" y="299" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1604620963032" />
     <state x="452" y="436" key="Vcs.Push.Dialog.v2/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603893420792" />
     <state x="458" y="215" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603936929351">
       <screen x="0" y="0" width="1500" height="960" />

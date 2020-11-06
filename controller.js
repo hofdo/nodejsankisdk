@@ -10,25 +10,22 @@ let message = null;
 let device_id = null;
 
 let client = mqtt.connect('mqtt://localhost', {
-    clientId: 'controller'
-    //protocolId: 'MQIsdp',
-    //protocolVersion: 3
+    clientId: 'controller',
+    protocolId: 'MQIsdp',
+    protocolVersion: 3
 });
 
 
 client.on("connect", function () {
     client.subscribe('command/#')
-    noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
-    setTimeout(function (){
-        noble.stopScanning();
-    }, 2000);
-    connect('e976d4f116a0');
 })
 
 client.on("message", function (topic, message) {
     console.log('Topic: ' + topic + ' Msg: ' + message.toString());
-    let msg = JSON.parse(message.toString());
-    switch (msg['command']) {
+    let topicsLvl = topic.split('/');
+    let command = topicsLvl[1];
+    /*
+    switch (command.toLowerCase()) {
         case 'scan':
             noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
             setTimeout(function (){
@@ -36,72 +33,72 @@ client.on("message", function (topic, message) {
             }, 2000);
             break;
         case 'connect':
-            if (msg['target'].toLowerCase() === 'global'){
+            if (args[1].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     connect(key);
                 })
             }
             else {
-                device_id = msg['target'];
+                device_id = args[1];
                 connect(device_id);
             }
             break;
         case 'disconnect':
-            if (msg['target'].toLowerCase() === 'global'){
+            if (args[1].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     disconnect(key);
                 })
             }
             else {
-                device_id = msg['target'];
+                device_id = args[1];
                 disconnect(device_id)
             }
             break;
         case 'speed':
-            let speed = msg['speed'];
-            let accel = msg['accel'];
-            if (msg['target'].toLowerCase() === 'global'){
+            let speed = args[2];
+            let accel = args[3];
+            if (args[1] === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     setSpeed(key, speed, accel);
                 })
             }
             else {
-                device_id = msg['target'];
+                device_id = args[1];
                 setSpeed(device_id, speed, accel);
             }
             break;
         case 'change_lane':
-            if (msg['target'].toLowerCase() === 'global'){
-                let offset = msg['offset'];
+            if (args[1] === 'global'){
+                let offset = args[2];
                 Object.keys(vehicles).forEach(function (key){
                     changeLane(key, offset);
                 })
             }
             else {
-                device_id = msg['target'];
-                let offset = msg['offset'];
+                device_id = args[1];
+                let offset = args[2];
                 changeLane(device_id, offset);
             }
             break;
         case 'changelight':
-            if (msg['target'].toLowerCase() === 'global'){
+            if (args[1] === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     changeLights(key);
                 })
             }
             else {
-                device_id = msg['target'];
+                device_id = args[1];
                 changeLights(device_id);
             }
             break;
         case 'changelightpattern':
-            if (msg['target'].toLowerCase() === 'global'){
+            if (args[1] === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     changeLightPattern(key);
                 })
             }
             else {
-                device_id = msg['target'];
+                device_id = args[1];
                 changeLightPattern(device_id);
             }
             break;
@@ -113,6 +110,8 @@ client.on("message", function (topic, message) {
             console.log("Invalid Input!")
             break;
     }
+
+     */
 })
 
 
@@ -222,4 +221,101 @@ noble.on('discover', function (device){
     }
     console.log("Scanned: " + device.id);
 });
+
+
+var cli = readline.createInterface(({
+    input: process.stdin,
+    output: process.stdout
+}));
+
+cli.on('line', function (cmd){
+    let args = cmd.split(' ');
+    switch (args[0].toLowerCase()) {
+        case 'scan':
+            noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
+            setTimeout(function (){
+                noble.stopScanning();
+            }, 2000);
+            break;
+        case 'connect':
+            if (args[1].toLowerCase() === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    connect(key);
+                })
+            }
+            else {
+                device_id = args[1];
+                connect(device_id);
+            }
+            break;
+        case 'disconnect':
+            if (args[1].toLowerCase() === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    disconnect(key);
+                })
+            }
+            else {
+                device_id = args[1];
+                disconnect(device_id)
+            }
+            break;
+        case 'speed':
+            let speed = args[2];
+            let accel = args[3];
+            if (args[1] === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    setSpeed(key, speed, accel);
+                })
+            }
+            else {
+                device_id = args[1];
+                setSpeed(device_id, speed, accel);
+            }
+            break;
+        case 'change_lane':
+            if (args[1] === 'global'){
+                let offset = args[2];
+                Object.keys(vehicles).forEach(function (key){
+                    changeLane(key, offset);
+                })
+            }
+            else {
+                device_id = args[1];
+                let offset = args[2];
+                changeLane(device_id, offset);
+            }
+            break;
+        case 'changelight':
+            if (args[1] === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    changeLights(key);
+                })
+            }
+            else {
+                device_id = args[1];
+                changeLights(device_id);
+            }
+            break;
+        case 'changeightpattern':
+            if (args[1] === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    changeLightPattern(key);
+                })
+            }
+            else {
+                device_id = args[1];
+                changeLightPattern(device_id);
+            }
+            break;
+        case 'exit':
+            console.log("Exit program...")
+            process.exit();
+            break;
+        default:
+            console.log("Invalid Input!")
+            break;
+    }
+});
+
+
 
