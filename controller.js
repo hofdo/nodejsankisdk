@@ -22,10 +22,9 @@ client.on("connect", function () {
 
 client.on("message", function (topic, message) {
     console.log('Topic: ' + topic + ' Msg: ' + message.toString());
-    let topicsLvl = topic.split('/');
-    let command = topicsLvl[1];
-    /*
-    switch (command.toLowerCase()) {
+    let msg = JSON.parse(message.toString());
+
+    switch (msg['command'].toLowerCase()) {
         case 'scan':
             noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
             setTimeout(function (){
@@ -33,72 +32,72 @@ client.on("message", function (topic, message) {
             }, 2000);
             break;
         case 'connect':
-            if (args[1].toLowerCase() === 'global'){
+            if (msg['target'].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     connect(key);
                 })
             }
             else {
-                device_id = args[1];
+                device_id = msg['target'];
                 connect(device_id);
             }
             break;
         case 'disconnect':
-            if (args[1].toLowerCase() === 'global'){
+            if (msg['target'].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     disconnect(key);
                 })
             }
             else {
-                device_id = args[1];
+                device_id = msg['target'];
                 disconnect(device_id)
             }
             break;
         case 'speed':
-            let speed = args[2];
-            let accel = args[3];
-            if (args[1] === 'global'){
+            let speed = msg['speed'];
+            let accel = msg['accel'];
+            if (msg['target'].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     setSpeed(key, speed, accel);
                 })
             }
             else {
-                device_id = args[1];
+                device_id = msg['target'];
                 setSpeed(device_id, speed, accel);
             }
             break;
         case 'change_lane':
-            if (args[1] === 'global'){
-                let offset = args[2];
+            if (msg['target'].toLowerCase() === 'global'){
+                let offset = msg['offset'];
                 Object.keys(vehicles).forEach(function (key){
                     changeLane(key, offset);
                 })
             }
             else {
-                device_id = args[1];
-                let offset = args[2];
+                device_id = msg['target'];
+                let offset = msg['offset'];
                 changeLane(device_id, offset);
             }
             break;
         case 'changelight':
-            if (args[1] === 'global'){
+            if (msg['target'].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     changeLights(key);
                 })
             }
             else {
-                device_id = args[1];
+                device_id = msg['target'];
                 changeLights(device_id);
             }
             break;
         case 'changelightpattern':
-            if (args[1] === 'global'){
+            if (msg['target'].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     changeLightPattern(key);
                 })
             }
             else {
-                device_id = args[1];
+                device_id = msg['target'];
                 changeLightPattern(device_id);
             }
             break;
@@ -111,7 +110,6 @@ client.on("message", function (topic, message) {
             break;
     }
 
-     */
 })
 
 
@@ -222,6 +220,7 @@ noble.on('discover', function (device){
     console.log("Scanned: " + device.id);
 });
 
+/*
 
 var cli = readline.createInterface(({
     input: process.stdin,
@@ -318,4 +317,4 @@ cli.on('line', function (cmd){
 });
 
 
-
+ */
