@@ -10,14 +10,19 @@ let message = null;
 let device_id = null;
 
 let client = mqtt.connect('mqtt://localhost', {
-    clientId: 'controller',
-    protocolId: 'MQIsdp',
-    protocolVersion: 3
+    clientId: 'controller'
+    //protocolId: 'MQIsdp',
+    //protocolVersion: 3
 });
 
 
 client.on("connect", function () {
     client.subscribe('command/#')
+    noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
+    setTimeout(function (){
+        noble.stopScanning();
+    }, 2000);
+    connect('e976d4f116a0');
 })
 
 client.on("message", function (topic, message) {
