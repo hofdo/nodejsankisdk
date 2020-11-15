@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Test Run MQTT">
-      <change beforePath="$PROJECT_DIR$/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/noblesdk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/noblesdk.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +54,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="9.11.2" />
-    <property name="javascript.nodejs.core.library.typings.version" value="9.6.61" />
+    <property name="javascript.nodejs.core.library.configured.version" value="8.9.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="8.9.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -106,6 +107,7 @@
       <workItem from="1603998465566" duration="19751000" />
       <workItem from="1604354134063" duration="17694000" />
       <workItem from="1604615408794" duration="6209000" />
+      <workItem from="1605481342926" duration="1685000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1603893410989</created>
@@ -314,10 +316,10 @@
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="458" y="215" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1500.960@0.0.1500.960" timestamp="1603936929351" />
-    <state x="677" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603893465569">
+    <state x="677" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605482895342">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="677" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1603893465569" />
+    <state x="677" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/3440.0.2560.1400/0.0.3440.1400@0.0.3440.1400" timestamp="1605482895342" />
     <state x="415" y="208" width="672" height="678" key="search.everywhere.popup" timestamp="1604359213545">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
