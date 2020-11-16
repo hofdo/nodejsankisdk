@@ -137,33 +137,36 @@ function map_to_object(map) {
 
 function connect(device_id){
     let vehicle = noble._peripherals[device_id]
-    if (vehicle === undefined){
-        console.log("welp");
+    if (!vehicle === undefined){
+        vehicle.connect(function(error) {
+            vehicle.discoverSomeServicesAndCharacteristics(
+                ["be15beef6186407e83810bd89c4d8df4"],
+                ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"],
+                function(error, services, characteristics) {
+                    vehicle.reader = characteristics[1];//.find(x => !x.properties.includes("write"));
+                    vehicle.writer = characteristics[0];//.find(x => x.properties.includes("write"));
+                    vehicles[device_id]['writer'] = characteristics[0];
+                    vehicles[device_id]['reader'] = characteristics[1];
+                    vehicle.reader.notify(true);
+                    vehicle.reader.on('data', function(data, isNotification) {
+                        //console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
+                    });
+                    vehicles[device_id]['connected'] = true;
+                    message = new Buffer(4);
+                    message.writeUInt8(0x03, 0);
+                    message.writeUInt8(0x90, 1);
+                    message.writeUInt8(0x01, 2);
+                    message.writeUInt8(0x01, 3);
+                    vehicle.writer.write(message, true);
+                    console.log("connect success");
+                }
+            );
+        });
     }
-    vehicle.connect(function(error) {
-        vehicle.discoverSomeServicesAndCharacteristics(
-            ["be15beef6186407e83810bd89c4d8df4"],
-            ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"],
-            function(error, services, characteristics) {
-                vehicle.reader = characteristics[1];//.find(x => !x.properties.includes("write"));
-                vehicle.writer = characteristics[0];//.find(x => x.properties.includes("write"));
-                vehicles[device_id]['writer'] = characteristics[0];
-                vehicles[device_id]['reader'] = characteristics[1];
-                vehicle.reader.notify(true);
-                vehicle.reader.on('data', function(data, isNotification) {
-                    //console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
-                });
-                vehicles[device_id]['connected'] = true;
-                message = new Buffer(4);
-                message.writeUInt8(0x03, 0);
-                message.writeUInt8(0x90, 1);
-                message.writeUInt8(0x01, 2);
-                message.writeUInt8(0x01, 3);
-                vehicle.writer.write(message, true);
-                console.log("connect success");
-            }
-        );
-    });
+    else {
+        console.log("Invalid command");
+    }
+
 }
 
 function disconnect(device_id){
