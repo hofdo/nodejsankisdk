@@ -12,22 +12,37 @@ let device_id = null;
 noble.startScanningAsync(['be15beef6186407e83810bd89c4d8df4'], false);
 setTimeout(function (){
     noble.stopScanningAsync();
-}, 2000);
+}, 10000);
 
 noble.on('discover', async function (device){
     vehicles[device.id] = {
         'id': device.id,
         'device': noble._peripherals[device.id],
         'connected': false,
-        'writer': null,
-        'reader': null
+        'writer': null
     }
-    await device.connectAsync();
-    const {characteristics} = await device.discoverSomeServicesAndCharacteristicsAsync(["be15beef6186407e83810bd89c4d8df4"],
-        ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"]);
-
-    //connect(device_id);
     console.log("Scanned: " + device.id);
+    await device.connectAsync();
+    const characteristics = await device.discoverSomeServicesAndCharacteristicsAsync(["be15beef6186407e83810bd89c4d8df4"],
+        ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"]);
+    console.log("Connected: " + device.id);
+    characteristics[1].notify(true);
+    device.on('data', function (data, isNotification){
+        console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
+    })
+    message = new Buffer(4);
+    message.writeUInt8(0x03, 0);
+    message.writeUInt8(0x90, 1);
+    message.writeUInt8(0x01, 2);
+    message.writeUInt8(0x01, 3);
+    characteristics[0].write(message, false);
+    vehicles[device.id] = {
+        'id': device.id,
+        'connected': true,
+        'reader': characteristics[1],
+        'writer': characteristics[0]
+    }
+    //connect(device_id);
 });
 
 
