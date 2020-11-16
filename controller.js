@@ -29,7 +29,7 @@ client.on("message", function (topic, message) {
             noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
             setTimeout(function (){
                 noble.stopScanning();
-                client.publish("controller/scanned", JSON.stringify(map_to_object(vehicles)));
+                client.publish("controller/scanned", JSON.stringify([...vehicles]));
             }, 2000);
             break;
         case 'connect':
