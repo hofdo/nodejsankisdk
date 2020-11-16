@@ -15,15 +15,9 @@ setTimeout(function (){
 }, 10000);
 
 noble.on('discover', function (device){
-    vehicles[device.id] = {
-        'id': device.id,
-        'device': noble._peripherals[device.id],
-        'connected': false,
-        'writer': null
-    }
     console.log("Scanned: " + device.id);
     device.connect();
-    const characteristics = device.discoverSomeServicesAndCharacteristics(["be15beef6186407e83810bd89c4d8df4"],
+    const {characteristics} = device.discoverSomeServicesAndCharacteristics(["be15beef6186407e83810bd89c4d8df4"],
         ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"]);
     console.log("Connected: " + device.id);
     characteristics[1].notify(true);
