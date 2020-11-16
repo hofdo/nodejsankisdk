@@ -29,7 +29,7 @@ client.on("message", function (topic, message) {
             noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
             setTimeout(function (){
                 noble.stopScanning();
-                client.publish("controller/scanned", JSON.stringify(vehicles));
+                client.publish("controller/scanned", JSON.stringify(map_to_object(vehicles)));
             }, 2000);
             break;
         case 'connect':
@@ -113,6 +113,19 @@ client.on("message", function (topic, message) {
 
 })
 
+
+function map_to_object(map) {
+    const out = Object.create(null)
+    map.forEach((value, key) => {
+        if (value instanceof Map) {
+            out[key] = map_to_object(value)
+        }
+        else {
+            out[key] = value
+        }
+    })
+    return out
+}
 
 
 function connect(device_id){
