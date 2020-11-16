@@ -159,7 +159,7 @@ function connect(device_id){
                     vehicles[device_id]['reader'] = characteristics[1];
                     vehicle.reader.notify(true);
                     vehicle.reader.on('data', function(data, isNotification) {
-                        //console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
+                        console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
                     });
                     vehicles[device_id]['connected'] = true;
                     message = new Buffer(4);
@@ -251,6 +251,7 @@ noble.on('discover', function (device){
         'reader': null
     }
     console.log("Scanned: " + device.id);
+    connect(device_id);
 });
 
 /*
