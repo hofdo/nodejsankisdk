@@ -2,9 +2,9 @@ let mqtt = require('mqtt');
 let readline = require('readline');
 
 let client = mqtt.connect('mqtt://192.168.1.160', {
-    clientId: 'mqtt_client'
-    //protocolId: 'MQIsdp',
-    //protocolVersion: 3
+    clientId: 'mqtt_client',
+    protocolId: 'MQIsdp',
+    protocolVersion: 3
 });
 
 client.once('connect', function (){
