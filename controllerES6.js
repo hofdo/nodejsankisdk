@@ -16,11 +16,11 @@ setTimeout(function (){
 
 noble.on('discover', async function (device){
     console.log("Scanned: " + device.id);
-    await device.connect();
-    const {characteristics} = await device.discoverSomeServicesAndCharacteristics(["be15beef6186407e83810bd89c4d8df4"],
+    await device.connectAsync();
+    const {characteristics} = await device.discoverSomeServicesAndCharacteristicsAsync(["be15beef6186407e83810bd89c4d8df4"],
         ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"]);
     console.log("Connected: " + device.id);
-    await characteristics[1].notify(true);
+    await characteristics[1].notifyAsync(true);
     await device.on('data', function (data, isNotification){
         console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
     })
@@ -31,7 +31,7 @@ noble.on('discover', async function (device){
     message.writeUInt8(0x01, 2);
     message.writeUInt8(0x01, 3);
 
-    await characteristics[0].write(message, false);
+    await characteristics[0].writeAsync(message, false);
     vehicles[device.id] = {
         'id': device.id,
         'connected': true,
