@@ -42,6 +42,9 @@ client.on("message", function (topic, message) {
                     connect(key);
                 })
             }
+            else if (msg['target'].toLowerCase() === 'undefined'){
+                console.log("welp")
+            }
             else {
                 device_id = msg['target'];
                 connect(device_id);
