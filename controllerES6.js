@@ -10,10 +10,11 @@ let message = null;
 let device_id = null;
 
 noble.startScanningAsync(['be15beef6186407e83810bd89c4d8df4'], false).then(r => {
-    if (r){
-        noble.stopScanningAsync();
-    }
+
 });
+setTimeout(function (){
+    noble.stopScanning();
+}, 5000);
 
 noble.on('discover', async function (device){
     console.log("Scanned: " + device.id);
@@ -21,11 +22,6 @@ noble.on('discover', async function (device){
     const {characteristics} = await device.discoverSomeServicesAndCharacteristicsAsync(["be15beef6186407e83810bd89c4d8df4"],
         ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"]);
     console.log("Connected: " + device.id);
-    await characteristics[1].notifyAsync(true);
-    device.on('data', function (data, isNotification){
-        console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
-    })
-
     message = new Buffer(4);
     message.writeUInt8(0x03, 0);
     message.writeUInt8(0x90, 1);
