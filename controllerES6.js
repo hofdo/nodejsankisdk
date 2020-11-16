@@ -29,6 +29,14 @@ noble.on('discover', async function (device){
     message.writeUInt8(0x01, 3);
 
     await characteristics[0].writeAsync(message, false);
+
+    message = Buffer.alloc(7);
+    message.writeUInt8(0x06, 0);
+    message.writeUInt8(0x24, 1);
+    message.writeInt16LE(400, 2);
+    message.writeInt16LE(25000, 4);
+    await characteristics[0].writeAsync(message, false);
+
     vehicles[device.id] = {
         'id': device.id,
         'connected': true,
