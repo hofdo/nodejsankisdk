@@ -25,9 +25,8 @@ client.on("message", function (topic, message) {
     let msg = JSON.parse(message.toString());
 
     switch (msg['command'].toLowerCase()) {
-        /*
         case 'scan':
-            noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
+            noble.startScanning(['be15beef6186407e83810bd89c4d8df4'], false);
             setTimeout(function (){
                 noble.stopScanning();
                 let payload = [];
@@ -48,8 +47,7 @@ client.on("message", function (topic, message) {
                 connect(device_id);
             }
             break;
-
-         */
+            /*
         case 'connect':
             noble.startScanning(['be15beef6186407e83810bd89c4d8df4'], false);
             setTimeout(function (){
@@ -61,6 +59,8 @@ client.on("message", function (topic, message) {
                 client.publish("controller/scanned", JSON.stringify(payload));
             }, 2000);
             break;
+
+             */
         case 'disconnect':
             if (msg['target'].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
