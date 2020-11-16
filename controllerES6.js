@@ -9,12 +9,14 @@ let vehicles = new Map();
 let message = null;
 let device_id = null;
 
-noble.startScanningAsync(['be15beef6186407e83810bd89c4d8df4'], false);
+noble.startScanningAsync(['be15beef6186407e83810bd89c4d8df4'], false).then(r => {
+    console.log(r.id);
+});
 setTimeout(function (){
     noble.stopScanningAsync();
 }, 10000);
-
-noble.on('discover', async function (device){
+/*
+noble.on('discover', function (device){
     vehicles[device.id] = {
         'id': device.id,
         'device': noble._peripherals[device.id],
@@ -22,8 +24,8 @@ noble.on('discover', async function (device){
         'writer': null
     }
     console.log("Scanned: " + device.id);
-    await device.connectAsync();
-    const characteristics = await device.discoverSomeServicesAndCharacteristicsAsync(["be15beef6186407e83810bd89c4d8df4"],
+    device.connect();
+    const characteristics = device.discoverSomeServicesAndCharacteristics(["be15beef6186407e83810bd89c4d8df4"],
         ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"]);
     console.log("Connected: " + device.id);
     characteristics[1].notify(true);
@@ -44,6 +46,8 @@ noble.on('discover', async function (device){
     }
     //connect(device_id);
 });
+
+ */
 
 
 function connect(device_id){
