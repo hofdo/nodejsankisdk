@@ -29,6 +29,11 @@ client.on("message", function (topic, message) {
             noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
             setTimeout(function (){
                 noble.stopScanning();
+                let payload = [];
+                Object.keys(vehicles).forEach(function (key){
+                    payload.push(key);
+                })
+                client.publish("controller/scanned", JSON.stringify(payload));
             }, 2000);
             break;
         case 'connect':
@@ -230,7 +235,6 @@ noble.on('discover', function (device){
         'writer': null,
         'reader': null
     }
-    client.publish("controller/scanned", device.id);
     console.log("Scanned: " + device.id);
 });
 
