@@ -9,13 +9,11 @@ let vehicles = new Map();
 let message = null;
 let device_id = null;
 
-noble.startScanningAsync(['be15beef6186407e83810bd89c4d8df4'], false).then(r => {
-    console.log(r.id);
-});
+noble.startScanning(['be15beef6186407e83810bd89c4d8df4'], false);
 setTimeout(function (){
-    noble.stopScanningAsync();
+    noble.stopScanning();
 }, 10000);
-/*
+
 noble.on('discover', function (device){
     vehicles[device.id] = {
         'id': device.id,
@@ -47,7 +45,7 @@ noble.on('discover', function (device){
     //connect(device_id);
 });
 
- */
+
 
 
 function connect(device_id){

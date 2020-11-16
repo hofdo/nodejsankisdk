@@ -51,7 +51,7 @@ client.on("message", function (topic, message) {
 
          */
         case 'connect':
-            noble.startScanningAsync(['be15beef6186407e83810bd89c4d8df4']);
+            noble.startScanning(['be15beef6186407e83810bd89c4d8df4'], false);
             setTimeout(function (){
                 noble.stopScanning();
                 let payload = [];
