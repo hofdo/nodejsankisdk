@@ -22,7 +22,7 @@ noble.on('discover', function (device){
         'writer': null,
         'reader': null
     }
-    connect(device_id);
+    //connect(device_id);
     console.log("Scanned: " + device.id);
 });
 
