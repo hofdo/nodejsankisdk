@@ -9,10 +9,11 @@ let vehicles = new Map();
 let message = null;
 let device_id = null;
 
-noble.startScanning(['be15beef6186407e83810bd89c4d8df4'], false);
-setTimeout(function (){
-    noble.stopScanning();
-}, 15000);
+noble.startScanningAsync(['be15beef6186407e83810bd89c4d8df4'], false).then(r => {
+    if (r){
+        noble.stopScanningAsync();
+    }
+});
 
 noble.on('discover', async function (device){
     console.log("Scanned: " + device.id);
