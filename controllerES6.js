@@ -14,7 +14,7 @@ setTimeout(function (){
     noble.stopScanningAsync();
 }, 2000);
 
-noble.on('discover', function (device){
+noble.on('discover', async function (device){
     vehicles[device.id] = {
         'id': device.id,
         'device': noble._peripherals[device.id],
@@ -22,6 +22,10 @@ noble.on('discover', function (device){
         'writer': null,
         'reader': null
     }
+    await device.connectAsync();
+    const {characteristics} = await device.discoverSomeServicesAndCharacteristicsAsync(["be15beef6186407e83810bd89c4d8df4"],
+        ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"]);
+
     //connect(device_id);
     console.log("Scanned: " + device.id);
 });
