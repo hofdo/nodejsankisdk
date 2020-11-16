@@ -137,7 +137,6 @@ function map_to_object(map) {
 
 function connect(device_id){
     let vehicle = noble._peripherals[device_id]
-    if (!vehicle === undefined){
         vehicle.connect(function(error) {
             vehicle.discoverSomeServicesAndCharacteristics(
                 ["be15beef6186407e83810bd89c4d8df4"],
@@ -162,10 +161,6 @@ function connect(device_id){
                 }
             );
         });
-    }
-    else {
-        console.log("Invalid command");
-    }
 
 }
 
