@@ -12,7 +12,7 @@ let device_id = null;
 noble.startScanning(['be15beef6186407e83810bd89c4d8df4'], false);
 setTimeout(function (){
     noble.stopScanning();
-}, 10000);
+}, 15000);
 
 noble.on('discover', async function (device){
     console.log("Scanned: " + device.id);
@@ -21,7 +21,7 @@ noble.on('discover', async function (device){
         ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"]);
     console.log("Connected: " + device.id);
     await characteristics[1].notifyAsync(true);
-    await device.on('data', function (data, isNotification){
+    device.on('data', function (data, isNotification){
         console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
     })
 
