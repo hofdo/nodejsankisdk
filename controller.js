@@ -20,13 +20,15 @@ client.on("connect", function () {
     client.subscribe('command/#')
 })
 
+
+
 client.on("message", function (topic, message) {
     console.log('Topic: ' + topic + ' Msg: ' + message.toString());
     let msg = JSON.parse(message.toString());
 
     switch (msg['command'].toLowerCase()) {
         case 'scan':
-            noble.startScanning(['be15beef6186407e83810bd89c4d8df4'], false);
+            noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
             setTimeout(function (){
                 noble.stopScanning();
                 let payload = [];
@@ -47,20 +49,6 @@ client.on("message", function (topic, message) {
                 connect(device_id);
             }
             break;
-            /*
-        case 'connect':
-            noble.startScanning(['be15beef6186407e83810bd89c4d8df4'], false);
-            setTimeout(function (){
-                noble.stopScanning();
-                let payload = [];
-                Object.keys(vehicles).forEach(function (key){
-                    payload.push(key);
-                })
-                client.publish("controller/scanned", JSON.stringify(payload));
-            }, 2000);
-            break;
-
-             */
         case 'disconnect':
             if (msg['target'].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
@@ -96,6 +84,17 @@ client.on("message", function (topic, message) {
                 device_id = msg['target'];
                 let offset = msg['offset'];
                 changeLane(device_id, offset);
+            }
+            break;
+        case 'u_turn':
+            if (msg['target'].toLowerCase() === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    uTurn(key);
+                })
+            }
+            else {
+                device_id = msg['target'];
+                uTurn(device_id);
             }
             break;
         case 'changelight':
@@ -159,7 +158,7 @@ function connect(device_id){
                     vehicles[device_id]['reader'] = characteristics[1];
                     vehicle.reader.notify(true);
                     vehicle.reader.on('data', function(data, isNotification) {
-                        //console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
+                        console.log(util.format("%s;%s\n", vehicle.id, data.toString("hex")));
                     });
                     vehicles[device_id]['connected'] = true;
                     message = new Buffer(4);
@@ -197,6 +196,13 @@ function changeLane(device_id, offset){
     message.writeInt16LE(250,2);
     message.writeInt16LE(1000, 4);
     message.writeFloatLE(offset, 6);
+    vehicles[device_id]['writer'].write(message);
+}
+
+function uTurn(key) {
+    message = Buffer.alloc(2);
+    message.writeUInt8(0x02, 0);
+    message.writeUInt8(0x32, 1); // ANKI_VEHICLE_MSG_C2V_TURN_180
     vehicles[device_id]['writer'].write(message);
 }
 
