@@ -145,6 +145,10 @@ function map_to_object(map) {
     return out
 }
 
+function dataListener(data, isNotification, vehicle){
+    console.log(util.format("%s;%s\n", vehicle.id, data.readUInt8(1)));
+}
+
 
 function connect(device_id){
     let vehicle = noble._peripherals[device_id]
@@ -158,9 +162,7 @@ function connect(device_id){
                     vehicles[device_id]['writer'] = characteristics[0];
                     vehicles[device_id]['reader'] = characteristics[1];
                     vehicle.reader.notify(true);
-                    vehicle.reader.on('data', function(data, isNotification) {
-                        console.log(util.format("%s;%s\n", vehicle.id, data.readUInt8(1)));
-                    });
+                    vehicle.reader.on('data', (data, isNot) => dataListener(data, isNot, vehicle));
                     vehicles[device_id]['connected'] = true;
                     message = new Buffer(4);
                     message.writeUInt8(0x03, 0);
