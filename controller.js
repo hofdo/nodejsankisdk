@@ -146,7 +146,101 @@ function map_to_object(map) {
 }
 
 function dataListener(data, isNotification, vehicle){
-    console.log(util.format("%s;%s\n", vehicle.id, data.readUInt8(1)));
+    // console.log(util.format("%s;%s\n", vehicle.id, data.readUInt8(1)));
+    let messageID = data.readUInt8(1);
+
+    switch (messageID){
+        case 23:
+            // Ping Responses
+            client.publish("controller/ping", JSON.stringify({
+                "command": "ping_res",
+                "target": vehicle.id
+                }
+            ));
+            break;
+        case 25:
+            // Version received
+            let version = data.readUInt16LE(2);
+            client.publish("controller/version", JSON.stringify({
+                    "command": "version_res",
+                    "target": vehicle.id,
+                    "data": version
+                }
+            ));
+            break;
+        case 27:
+            // Battery Level received
+            let level = data.readUInt16LE(2);
+            client.publish("controller/battery_level", JSON.stringify({
+                    "command": "battery_res",
+                    "target": vehicle.id,
+                    "data": level
+                }
+            ));
+            break;
+        case 39:
+            // ANKI_VEHICLE_MSG_V2C_LOCALIZATION_POSITION_UPDATE
+            let pieceLocation = data.readUInt8(2);
+            let pieceId = data.readUInt8(3);
+            let offset_pos = data.readFloatLE(4);
+            let speed = data.readUInt16LE(8);
+            console.log(vehicle.id + "Message_id: " + messageID + ' offset: '  + offset_pos + ' speed: ' + speed + ' - pieceId: '  + pieceId + ' pieceLocation: ' + pieceLocation);
+            client.publish("controller/pos_update", JSON.stringify({
+                    "command": "pos_update_res",
+                    "target": vehicle.id,
+                    "data": {
+                        "offset": offset_pos,
+                        "speed": speed,
+                        "pieceID": pieceId,
+                        "pieceLocation": pieceLocation,
+                    }
+                }
+            ));
+            break;
+        case 41:
+            // ANKI_VEHICLE_MSG_V2C_LOCALIZATION_TRANSITION_UPDATE
+            let offset_trans = data.readFloatLE(4)
+            console.log(vehicle.id + "Message_id: " + messageID + ' offset: '  + offset_trans);
+            client.publish("controller/trans_update", JSON.stringify({
+                    "command": "trams_update_res",
+                    "target": vehicle.id,
+                    "data": {
+                        "offset": offset_trans
+                    }
+                }
+            ));
+            break;
+        case 42:
+            //  ANKI_VEHICLE_MSG_V2C_LOCALIZATION_INTERSECTION_UPDATE
+            //ToDo Implement
+            break;
+        case 43:
+            // ANKI_VEHICLE_MSG_V2C_VEHICLE_DELOCALIZED
+            client.publish("controller/delocalized", JSON.stringify({
+                    "command": "delocalized",
+                    "target": vehicle.id
+                }
+            ));
+            break;
+        case 45:
+            // ANKI_VEHICLE_MSG_V2C_OFFSET_FROM_ROAD_CENTER_UPDATE
+            let offset_update = data.readFloatLE(2);
+            client.publish("controller/trans_update", JSON.stringify({
+                    "command": "trams_update_res",
+                    "target": vehicle.id,
+                    "data": {
+                        "offset": offset_update
+                    }
+                }
+            ));
+
+            break;
+        default:
+            // Not definded
+
+            break;
+    }
+
 }
 
 
@@ -262,102 +356,3 @@ noble.on('discover', function (device){
     console.log("Scanned: " + device.id);
     connect(device_id);
 });
-
-/*
-
-var cli = readline.createInterface(({
-    input: process.stdin,
-    output: process.stdout
-}));
-
-cli.on('line', function (cmd){
-    let args = cmd.split(' ');
-    switch (args[0].toLowerCase()) {
-        case 'scan':
-            noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
-            setTimeout(function (){
-                noble.stopScanning();
-            }, 2000);
-            break;
-        case 'connect':
-            if (args[1].toLowerCase() === 'global'){
-                Object.keys(vehicles).forEach(function (key){
-                    connect(key);
-                })
-            }
-            else {
-                device_id = args[1];
-                connect(device_id);
-            }
-            break;
-        case 'disconnect':
-            if (args[1].toLowerCase() === 'global'){
-                Object.keys(vehicles).forEach(function (key){
-                    disconnect(key);
-                })
-            }
-            else {
-                device_id = args[1];
-                disconnect(device_id)
-            }
-            break;
-        case 'speed':
-            let speed = args[2];
-            let accel = args[3];
-            if (args[1] === 'global'){
-                Object.keys(vehicles).forEach(function (key){
-                    setSpeed(key, speed, accel);
-                })
-            }
-            else {
-                device_id = args[1];
-                setSpeed(device_id, speed, accel);
-            }
-            break;
-        case 'change_lane':
-            if (args[1] === 'global'){
-                let offset = args[2];
-                Object.keys(vehicles).forEach(function (key){
-                    changeLane(key, offset);
-                })
-            }
-            else {
-                device_id = args[1];
-                let offset = args[2];
-                changeLane(device_id, offset);
-            }
-            break;
-        case 'changelight':
-            if (args[1] === 'global'){
-                Object.keys(vehicles).forEach(function (key){
-                    changeLights(key);
-                })
-            }
-            else {
-                device_id = args[1];
-                changeLights(device_id);
-            }
-            break;
-        case 'changeightpattern':
-            if (args[1] === 'global'){
-                Object.keys(vehicles).forEach(function (key){
-                    changeLightPattern(key);
-                })
-            }
-            else {
-                device_id = args[1];
-                changeLightPattern(device_id);
-            }
-            break;
-        case 'exit':
-            console.log("Exit program...")
-            process.exit();
-            break;
-        default:
-            console.log("Invalid Input!")
-            break;
-    }
-});
-
-
- */
