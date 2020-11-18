@@ -87,6 +87,19 @@ client.on("message", function (topic, message) {
                 changeLane(device_id, offset);
             }
             break;
+        case 'change_offset':
+            if (msg['target'].toLowerCase() === 'global'){
+                let offset = msg['offset'];
+                Object.keys(vehicles).forEach(function (key){
+                    setOffsetFromCenter(key, offset);
+                })
+            }
+            else {
+                device_id = msg['target'];
+                let offset = msg['offset'];
+                setOffsetFromCenter(device_id, offset);
+            }
+            break;
         case 'u_turn':
             if (msg['target'].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
@@ -243,7 +256,6 @@ function dataListener(data, isNotification, vehicle){
 
 }
 
-
 function connect(device_id){
     let vehicle = noble._peripherals[device_id]
         vehicle.connect(function(error) {
@@ -293,6 +305,14 @@ function changeLane(device_id, offset){
     message.writeInt16LE(250,2);
     message.writeInt16LE(1000, 4);
     message.writeFloatLE(offset, 6);
+    vehicles[device_id]['writer'].write(message);
+}
+
+function setOffsetFromCenter(device_id, offset){
+    message = Buffer.alloc(4);
+    message.writeUInt8(3, 0);
+    message.writeUInt8(0x2c, 1);
+    message.writeFloatLE(offset, 2);
     vehicles[device_id]['writer'].write(message);
 }
 
