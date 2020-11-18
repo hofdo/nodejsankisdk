@@ -4,6 +4,7 @@ let noble = require('@abandonware/noble');
 let mqtt = require('mqtt')
 let url = require('url');
 let readline = require('readline');
+let util = require('util');
 
 let vehicles = new Map();
 let message = null;
