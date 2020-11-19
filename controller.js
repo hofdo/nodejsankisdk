@@ -10,18 +10,29 @@ let vehicles = new Map();
 let message = null;
 let device_id = null;
 
+/**
+ *
+ * @type {MqttClient}
+ */
+
 let client = mqtt.connect('mqtt://localhost', {
     clientId: 'controller',
     protocolId: 'MQIsdp',
     protocolVersion: 3
 });
 
+/**
+ *
+ */
 
 client.on("connect", function () {
     client.subscribe('command/#')
 })
 
 
+/**
+ *
+ */
 
 client.on("message", function (topic, message) {
     console.log('Topic: ' + topic + ' Msg: ' + message.toString());
@@ -144,19 +155,12 @@ client.on("message", function (topic, message) {
 
 })
 
-
-function map_to_object(map) {
-    const out = Object.create(null)
-    map.forEach((value, key) => {
-        if (value instanceof Map) {
-            out[key] = map_to_object(value)
-        }
-        else {
-            out[key] = value
-        }
-    })
-    return out
-}
+/**
+ *
+ * @param data
+ * @param isNotification
+ * @param vehicle
+ */
 
 function dataListener(data, isNotification, vehicle){
     // console.log(util.format("%s;%s\n", vehicle.id, data.readUInt8(1)));
@@ -256,6 +260,11 @@ function dataListener(data, isNotification, vehicle){
 
 }
 
+/**
+ *
+ * @param device_id
+ */
+
 function connect(device_id){
     let vehicle = noble._peripherals[device_id]
         vehicle.connect(function(error) {
@@ -283,11 +292,23 @@ function connect(device_id){
 
 }
 
+/**
+ *
+ * @param device_id
+ */
+
 function disconnect(device_id){
     vehicles[device_id]['device'].disconnect();
     vehicles[device_id]['connected'] = false;
     console.log('Disconnected successfully!')
 }
+
+/**
+ *
+ * @param device_id
+ * @param speed
+ * @param accel
+ */
 
 function setSpeed(device_id, speed, accel){
     message = new Buffer(7);
@@ -297,6 +318,12 @@ function setSpeed(device_id, speed, accel){
     message.writeInt16LE(accel, 4);
     vehicles[device_id]['writer'].write(message);
 }
+
+/**
+ *
+ * @param device_id
+ * @param offset
+ */
 
 function changeLane(device_id, offset){
     message = new Buffer(12);
@@ -308,6 +335,12 @@ function changeLane(device_id, offset){
     vehicles[device_id]['writer'].write(message);
 }
 
+/**
+ *
+ * @param device_id
+ * @param offset
+ */
+
 function setOffsetFromCenter(device_id, offset){
     message = Buffer.alloc(4);
     message.writeUInt8(3, 0);
@@ -316,12 +349,22 @@ function setOffsetFromCenter(device_id, offset){
     vehicles[device_id]['writer'].write(message);
 }
 
+/**
+ *
+ * @param key
+ */
+
 function uTurn(key) {
     message = Buffer.alloc(2);
     message.writeUInt8(0x02, 0);
     message.writeUInt8(0x32, 1); // ANKI_VEHICLE_MSG_C2V_TURN_180
     vehicles[device_id]['writer'].write(message);
 }
+
+/**
+ *
+ * @param device_id
+ */
 
 function changeLights(device_id){
     message = new Buffer(3);
@@ -330,6 +373,11 @@ function changeLights(device_id){
     message.writeUInt8(140, 2);
     vehicles[device_id]['writer'].write(message);
 }
+
+/**
+ *
+ * @param device_id
+ */
 
 function changeLightPattern(device_id){
     message = new Buffer(8);
@@ -343,27 +391,45 @@ function changeLightPattern(device_id){
     vehicles[device_id]['writer'].write(message);
 }
 
+/**
+ *
+ * @param device_id
+ */
+
 function ping(device_id){
-    message = new Buffer(2);
-    message.writeUInt8(0x01, 0);
-    message.writeUInt8(0x1a,1);
-    vehicles[device_id]['writer'].write(message);
-}
-
-function requestBatteryLevel(device_id){
-    message = new Buffer(2);
-    message.writeUInt8(0x01, 0);
-    message.writeUInt8(0x18,1);
-    vehicles[device_id]['writer'].write(message);
-}
-
-function requestVersion(device_id){
     message = new Buffer(2);
     message.writeUInt8(0x01, 0);
     message.writeUInt8(0x16,1);
     vehicles[device_id]['writer'].write(message);
 }
 
+/**
+ *
+ * @param device_id
+ */
+
+function requestBatteryLevel(device_id){
+    message = new Buffer(2);
+    message.writeUInt8(0x01, 0);
+    message.writeUInt8(0x1a,1);
+    vehicles[device_id]['writer'].write(message);
+}
+
+/**
+ *
+ * @param device_id
+ */
+
+function requestVersion(device_id){
+    message = new Buffer(2);
+    message.writeUInt8(0x01, 0);
+    message.writeUInt8(0x18,1);
+    vehicles[device_id]['writer'].write(message);
+}
+
+/**
+ *
+ */
 
 noble.on('discover', function (device){
     vehicles[device.id] = {
