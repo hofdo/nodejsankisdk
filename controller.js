@@ -358,8 +358,8 @@ function uTurn(device_id) {
     message = Buffer.alloc(4);
     message.writeUInt8(0x02, 0);
     message.writeUInt8(0x32, 1); // ANKI_VEHICLE_MSG_C2V_TURN_180
-    message.writeUInt8(0x03, 2);
-    message.writeUInt8(0x01, 3);
+  //  message.writeUInt8(0x03, 2);
+   // message.writeUInt8(0x01, 3);
     vehicles[device_id]['writer'].write(message);
 }
 
