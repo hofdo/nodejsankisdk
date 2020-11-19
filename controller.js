@@ -355,9 +355,10 @@ function setOffsetFromCenter(device_id, offset){
  */
 
 function uTurn(device_id) {
-    message = Buffer.alloc(2);
+    message = Buffer.alloc(3);
     message.writeUInt8(0x02, 0);
     message.writeUInt8(0x32, 1); // ANKI_VEHICLE_MSG_C2V_TURN_180
+    message.writeUInt8(3, 2); // ANKI_VEHICLE_MSG_C2V_TURN_180
     vehicles[device_id]['writer'].write(message);
 }
 
