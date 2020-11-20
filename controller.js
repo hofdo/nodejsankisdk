@@ -275,7 +275,7 @@ function dataListener(data, isNotification, vehicle){
         case 45:
             // ANKI_VEHICLE_MSG_V2C_OFFSET_FROM_ROAD_CENTER_UPDATE
             let offset_update = data.readFloatLE(2);
-            client.publish("controller/trans_update", JSON.stringify({
+            client.publish("controller/offset_update", JSON.stringify({
                     "command": "trams_update_res",
                     "target": vehicle.id,
                     "data": {
