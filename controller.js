@@ -144,6 +144,39 @@ client.on("message", function (topic, message) {
                 changeLightPattern(device_id);
             }
             break;
+        case 'batteryStatus':
+            if (msg['target'].toLowerCase() === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    requestBatteryLevel(key);
+                })
+            }
+            else {
+                device_id = msg['target'];
+                requestBatteryLevel(device_id);
+            }
+            break;
+        case 'getVersion':
+            if (msg['target'].toLowerCase() === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    requestVersion(key);
+                })
+            }
+            else {
+                device_id = msg['target'];
+                requestVersion(device_id);
+            }
+            break;
+        case 'ping':
+            if (msg['target'].toLowerCase() === 'global'){
+                Object.keys(vehicles).forEach(function (key){
+                    ping(key);
+                })
+            }
+            else {
+                device_id = msg['target'];
+                ping(device_id);
+            }
+            break;
         case 'exit':
             console.log("Exit program...")
             process.exit();
