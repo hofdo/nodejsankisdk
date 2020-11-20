@@ -144,7 +144,7 @@ client.on("message", function (topic, message) {
                 changeLightPattern(device_id);
             }
             break;
-        case 'batteryStatus':
+        case 'batterystatus':
             if (msg['target'].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     requestBatteryLevel(key);
@@ -155,7 +155,7 @@ client.on("message", function (topic, message) {
                 requestBatteryLevel(device_id);
             }
             break;
-        case 'getVersion':
+        case 'getversion':
             if (msg['target'].toLowerCase() === 'global'){
                 Object.keys(vehicles).forEach(function (key){
                     requestVersion(key);
