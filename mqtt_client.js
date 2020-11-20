@@ -60,6 +60,12 @@ cli.on('line', function (cmd){
                 offset: args[2]
             }))
             break;
+        case 'u_turn':
+            client.publish('command/u_turn', JSON.stringify({
+                command: 'u_turn',
+                target: args[1]
+            }))
+            break;
         case 'change_light':
             client.publish('command/change_light', JSON.stringify({
                 command: 'change_light',
