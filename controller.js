@@ -6,6 +6,8 @@ let url = require('url');
 let readline = require('readline');
 let util = require('util');
 
+let msgUtil = require('messageUtil')
+
 let vehicles = new Map();
 let message = null;
 let device_id = null;
@@ -389,10 +391,10 @@ function setOffsetFromCenter(device_id, offset){
 
 function uTurn(device_id) {
     message = Buffer.alloc(4);
-    message.writeUInt8(0x02, 0);
+    message.writeUInt8(0x04, 0);
     message.writeUInt8(0x32, 1); // ANKI_VEHICLE_MSG_C2V_TURN_180
-    message.writeUInt8(0x3, 2);
-   // message.writeUInt8(0x01, 3);
+    message.writeUInt8(0x03, 2);
+    message.writeUInt8(0x01, 3);
     vehicles[device_id]['writer'].write(message);
 }
 
