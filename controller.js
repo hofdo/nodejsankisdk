@@ -262,7 +262,7 @@ function dataListener(data, isNotification, vehicle){
             break;
         case 42:
             //  ANKI_VEHICLE_MSG_V2C_LOCALIZATION_INTERSECTION_UPDATE
-            //ToDo Implement
+            console.log(vehicle.id + "Message_id: " + messageID);
             break;
         case 43:
             // ANKI_VEHICLE_MSG_V2C_VEHICLE_DELOCALIZED
