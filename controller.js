@@ -6,8 +6,6 @@ let url = require('url');
 let readline = require('readline');
 let util = require('util');
 
-let msgUtil = require('messageUtil')
-
 let vehicles = new Map();
 let message = null;
 let device_id = null;
