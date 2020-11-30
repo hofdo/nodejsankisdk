@@ -262,8 +262,9 @@ function dataListener(data, isNotification, vehicle){
             break;
         case 42:
             //  ANKI_VEHICLE_MSG_V2C_LOCALIZATION_INTERSECTION_UPDATE
-            console.log(vehicle.id + "Message_id: " + messageID + " road_piece_idx: " + data.readUInt8(2) + " offset: "
-                + data.readFloatLE(3));
+            console.log(vehicle.id + "Message_id: " + messageID + " road_piece_idx: " + data.readInt8(2) + " offset: "
+                + data.readFloatLE(3) + " intersection_code: " + data.readUInt8(4) + " is_exiting: " + data.readUInt8(5)
+                + "transition_bar: " + data.readUInt16LE(6) + "insection_code: " + data.readUInt16LE(7));
             break;
         case 43:
             // ANKI_VEHICLE_MSG_V2C_VEHICLE_DELOCALIZED
