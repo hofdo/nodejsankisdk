@@ -32,7 +32,7 @@ client.on("connect", function (){
 });
 
 client.on("message", function (topic, message){
-    let msg = message.toJSON();
+    let msg = JSON.parse(message.toString());
     let topicSep = topic.split("/");
     console.log(topic)
     if ( RegExp("Anki[\/]Host[\/]host[\/]I").test(topic)) {
