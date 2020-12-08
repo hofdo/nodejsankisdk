@@ -15,7 +15,7 @@ let client = mqtt.connect('mqtt://192.168.1.160', {
     protocolId: 'MQIsdp',
     protocolVersion: 3,
     will: {
-        topic: 'Anki/Host/' + uuid.v4() + '/S/HostStatus',
+        topic: 'Anki/Host/' + hostID + '/S/HostStatus',
         payload: JSON.stringify({
             "value": false
         }),
