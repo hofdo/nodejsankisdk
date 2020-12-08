@@ -70,6 +70,10 @@ noble.on('discover', function (device){
         'reader': null
     }
     console.log("Scanned: " + device.id);
+    client.publish("Anki/Host/" + hostID + "/E/CarDiscovered", JSON.stringify({
+        "timestamp": Math.round(Date.now() / 1000),
+        "Car": device.id
+    }))
     connect(device.id)
 });
 
