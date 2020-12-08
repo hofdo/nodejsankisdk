@@ -233,17 +233,27 @@ function dataListener(data, isNotification, vehicle){
             let pieceLocation = data.readUInt8(2);
             let pieceId = data.readUInt8(3);
             let offset_pos = data.readFloatLE(4);
-            let speed = data.readUInt16LE(8);
-            console.log(vehicle.id + "Message_id: " + messageID + ' offset: '  + offset_pos + ' speed: ' + speed + ' - pieceId: '  + pieceId + ' pieceLocation: ' + pieceLocation);
-            client.publish("controller/pos_update", JSON.stringify({
-                    "command": "pos_update_res",
-                    "target": vehicle.id,
-                    "data": {
-                        "offset": offset_pos,
-                        "speed": speed,
-                        "pieceID": pieceId,
-                        "pieceLocation": pieceLocation,
-                    }
+            let speed = data.readUInt16(8);
+            let flag = data.readUInt8(10);
+            let last_rec_lane_change_cmd_id = data.readUInt8(11);
+            let last_exe_lane_change_cmd_id = data.readUInt8(12);
+            let last_des_lane_change_speed = data.readUInt8(13);
+            let last_des_speed = data.readUInt8(15);
+
+            console.log("Vehicle ID: " + vehicle.id
+                + " Message_id: " + messageID
+                + ' offset: '  + offset_pos
+                + ' speed: ' + speed
+                + " flag: " + flag
+                + ' - pieceId: '  + pieceId
+                + ' pieceLocation: ' + pieceLocation
+                + " last_rec_lane_change_cmd: " + last_rec_lane_change_cmd_id
+                + " last_exe_lane_change_cmd: " + last_exe_lane_change_cmd_id
+                + " last_des_lane_change_speed: " + last_des_lane_change_speed
+                + " last_des_speed: " + last_des_speed);
+
+            client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
+                    "timestamp": Date.now()
                 }
             ));
             break;
