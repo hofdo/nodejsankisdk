@@ -233,7 +233,7 @@ function dataListener(data, isNotification, vehicle){
             let pieceLocation = data.readUInt8(2);
             let pieceId = data.readUInt8(3);
             let offset_pos = data.readFloatLE(4);
-            let speed = data.readUInt16(8);
+            let speed = data.readUInt16LE(8);
             let flag = data.readUInt8(10);
             let last_rec_lane_change_cmd_id = data.readUInt8(11);
             let last_exe_lane_change_cmd_id = data.readUInt8(12);
@@ -264,7 +264,7 @@ function dataListener(data, isNotification, vehicle){
             let offset_trans = data.readFloatLE(4);
             let last_recv_lane_change_id = data.readUInt8(8);
             let last_exec_lane_change_id = data.readUInt8(9);
-            let last_desired_lane_change_speed_mm_per_sec = data.readUInt16(10);
+            let last_desired_lane_change_speed_mm_per_sec = data.readUInt16LE(10);
 
             console.log("Vehicle ID " + vehicle.id
                 + "Message_id: " + messageID
@@ -287,12 +287,12 @@ function dataListener(data, isNotification, vehicle){
             let offset = data.readFloatLE(3);
             let intersection_code = data.readUInt8(7);
             let is_exiting = data.readUInt8(8);
-            let mm_transition_bar = data.readUInt16(9);
-            let mm_intersection_code = data.readUInt16(11);
+            let mm_transition_bar = data.readUInt16LE(9);
+            let mm_intersection_code = data.readUInt16LE(11);
 
             console.log(vehicle.id + "Message_id: " + messageID + " road_piece_idx: " + data.readInt8(2) + " offset: "
                 + data.readFloatLE(3) + " intersection_code: " + data.readUInt8(7) + " is_exiting: " + data.readUInt8(8)
-                + " mm_transition_bar: " + data.readUInt16(9) + " mm_insection_code: " + data.readUInt16(11));
+                + " mm_transition_bar: " + data.readUInt16LE(9) + " mm_insection_code: " + data.readUInt16LE(11));
 
             client.publish("controller/delocalized", JSON.stringify({
 
