@@ -34,8 +34,10 @@ client.on("connect", function (){
 client.on("message", function (topic, message){
     let msg = message.toJSON();
     let topicSep = topic.split("/");
+    console.log(topic)
     if ( RegExp("Anki[\/]Host[\/]host[\/]I[\/].*").test(topic)) {
         let connecting = msg["connecting"];
+        console.log(connecting)
         if (connecting) {
             //scan and connect
             noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
