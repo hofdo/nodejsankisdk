@@ -324,7 +324,6 @@ function connect(device_id){
                 }
             );
         });
-
 }
 
 /**

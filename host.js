@@ -70,6 +70,12 @@ noble.on('discover', function (device){
         'reader': null
     }
     console.log("Scanned: " + device.id);
+    connect(device.id)
+});
+
+client.on("error",function(error){ console.log("Can't connect"+error)});
+
+function connect(device_id){
     let vehicle = noble._peripherals[device_id]
     vehicle.connect(function(error) {
         vehicle.discoverSomeServicesAndCharacteristics(
@@ -81,7 +87,7 @@ noble.on('discover', function (device){
                 vehicles[device_id]['writer'] = characteristics[0];
                 vehicles[device_id]['reader'] = characteristics[1];
                 vehicle.reader.notify(true);
-                vehicle.reader.on('data', (data, isNot) => handleMsg(data, isNot, vehicle));
+                vehicle.reader.on('data', (data, isNot) => dataListener(data, isNot, vehicle));
                 vehicles[device_id]['connected'] = true;
                 message = new Buffer(4);
                 message.writeUInt8(0x03, 0);
@@ -93,9 +99,7 @@ noble.on('discover', function (device){
             }
         );
     });
-});
-
-client.on("error",function(error){ console.log("Can't connect"+error)});
+}
 
 function handleMsg(data, isnNot, vehicle){
     let messageID = data.readUInt8(1);
