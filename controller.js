@@ -238,7 +238,7 @@ function dataListener(data, isNotification, vehicle){
             let last_rec_lane_change_cmd_id = data.readUInt8(11);
             let last_exe_lane_change_cmd_id = data.readUInt8(12);
             let last_des_lane_change_speed = data.readUInt8(13);
-            let last_des_speed = data.readUInt8(15);
+            let last_des_speed = data.readUInt8(14);
 
             console.log("Vehicle ID: " + vehicle.id
                 + " Message_id: " + messageID
