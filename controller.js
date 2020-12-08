@@ -233,7 +233,7 @@ function dataListener(data, isNotification, vehicle){
             let pieceLocation = data.readUInt8(2);
             let pieceId = data.readUInt8(3);
             let offset_pos = data.readFloatLE(4);
-            let speed = data.readUInt16(8);
+            let speed = data.readUInt16LE(8);
             let flag = data.readUInt8(10);
             let last_rec_lane_change_cmd_id = data.readUInt8(11);
             let last_exe_lane_change_cmd_id = data.readUInt8(12);
