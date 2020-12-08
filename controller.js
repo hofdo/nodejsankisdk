@@ -234,70 +234,37 @@ function dataListener(data, isNotification, vehicle){
             let pieceId = data.readUInt8(3);
             let offset_pos = data.readFloatLE(4);
             let speed = data.readUInt16LE(8);
-            let flag = data.readUInt8(10);
-            let last_rec_lane_change_cmd_id = data.readUInt8(11);
-            let last_exe_lane_change_cmd_id = data.readUInt8(12);
-            let last_des_lane_change_speed = data.readUInt8(13);
-            let last_des_speed = data.readUInt8(15);
-
-            console.log("Vehicle ID: " + vehicle.id
-                + " Message_id: " + messageID
-                + ' offset: '  + offset_pos
-                + ' speed: ' + speed
-                + " flag: " + flag
-                + ' - pieceId: '  + pieceId
-                + ' pieceLocation: ' + pieceLocation
-                + " last_rec_lane_change_cmd: " + last_rec_lane_change_cmd_id
-                + " last_exe_lane_change_cmd: " + last_exe_lane_change_cmd_id
-                + " last_des_lane_change_speed: " + last_des_lane_change_speed
-                + " last_des_speed: " + last_des_speed);
-
-            client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
-                    "timestamp": Date.now()
+            console.log(vehicle.id + "Message_id: " + messageID + ' offset: '  + offset_pos + ' speed: ' + speed + ' - pieceId: '  + pieceId + ' pieceLocation: ' + pieceLocation);
+            client.publish("controller/pos_update", JSON.stringify({
+                    "command": "pos_update_res",
+                    "target": vehicle.id,
+                    "data": {
+                        "offset": offset_pos,
+                        "speed": speed,
+                        "pieceID": pieceId,
+                        "pieceLocation": pieceLocation,
+                    }
                 }
             ));
             break;
         case 41:
             // ANKI_VEHICLE_MSG_V2C_LOCALIZATION_TRANSITION_UPDATE
-            let road_piece_idx = data.readInt8(2);
-            let road_piece_idx_prev = data.readInt8(3);
-            let offset_trans = data.readFloatLE(4);
-            let last_recv_lane_change_id = data.readUInt8(8);
-            let last_exec_lane_change_id = data.readUInt8(9);
-            let last_desired_lane_change_speed_mm_per_sec = data.readUInt16LE(10);
-
-            console.log("Vehicle ID " + vehicle.id
-                + "Message_id: " + messageID
-                + " road_piece_idx: " + road_piece_idx
-                + " road_piece_idx_prev: " + road_piece_idx_prev
-                + ' offset: '  + offset_trans
-                + ' last_recv_lane_change_id: '  + last_recv_lane_change_id
-                + ' last_exec_lane_change_id: '  + last_exec_lane_change_id
-                + ' last_desired_lane_change_speed_mm_per_sec: '  + last_desired_lane_change_speed_mm_per_sec
-            );
-
+            let offset_trans = data.readFloatLE(4)
+            console.log(vehicle.id + "Message_id: " + messageID + ' offset: '  + offset_trans);
             client.publish("controller/trans_update", JSON.stringify({
-
+                    "command": "trams_update_res",
+                    "target": vehicle.id,
+                    "data": {
+                        "offset": offset_trans
+                    }
                 }
             ));
             break;
         case 42:
             //  ANKI_VEHICLE_MSG_V2C_LOCALIZATION_INTERSECTION_UPDATE
-            let road_piece_idx_intersection = data.readInt8(2);
-            let offset = data.readFloatLE(3);
-            let intersection_code = data.readUInt8(7);
-            let is_exiting = data.readUInt8(8);
-            let mm_transition_bar = data.readUInt16LE(9);
-            let mm_intersection_code = data.readUInt16LE(11);
-
             console.log(vehicle.id + "Message_id: " + messageID + " road_piece_idx: " + data.readInt8(2) + " offset: "
                 + data.readFloatLE(3) + " intersection_code: " + data.readUInt8(7) + " is_exiting: " + data.readUInt8(8)
                 + " mm_transition_bar: " + data.readUInt16LE(9) + " mm_insection_code: " + data.readUInt16LE(11));
-
-            client.publish("controller/delocalized", JSON.stringify({
-
-                }
-            ));
             break;
         case 43:
             // ANKI_VEHICLE_MSG_V2C_VEHICLE_DELOCALIZED
