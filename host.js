@@ -35,7 +35,7 @@ client.on("message", function (topic, message){
     let msg = message.toJSON();
     let topicSep = topic.split("/");
     console.log(topic)
-    if ( RegExp("Anki[\/]Host[\/]host[\/]I[\/].*").test(topic)) {
+    if ( RegExp("Anki[\/]Host[\/]host[\/]I").test(topic)) {
         let connecting = msg["connecting"];
         console.log(connecting)
         if (connecting) {
@@ -52,7 +52,7 @@ client.on("message", function (topic, message){
         } else {
             //disconnect
         }
-    } else if (RegExp("Anki[\/]Car[\/].*[\/]I[\/].*").test(topic)) {
+    } else if (RegExp("Anki[\/]Car[\/].*[\/]I").test(topic)) {
         handleCmd(topicSep[2], msg);
     } else if (RegExp("Anki[\/]Car[\/]I").test(topic)) {
         handleCmd("global", msg);
