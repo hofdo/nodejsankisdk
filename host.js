@@ -25,7 +25,7 @@ setInterval(function (){
         "value": false
     }))
     Object.keys(vehicles).forEach(function (key){
-        handleCmd(key, "ping", vehicles)
+        handleCmd(key, "ping", vehicles, client)
     })
 }, 5000);
 
@@ -88,9 +88,9 @@ client.on("message", function (topic, message){
             })
         }
     } else if (RegExp("Anki[\/]Car[\/].*[\/]I").test(topic)) {
-        handleCmd(topicSep[2], msg, vehicles);
+        handleCmd(topicSep[2], msg, vehicles, client);
     } else if (RegExp("Anki[\/]Car[\/]I").test(topic)) {
-        handleCmd("global", msg, vehicles);
+        handleCmd("global", msg, vehicles, client);
     } else {
     }
 });

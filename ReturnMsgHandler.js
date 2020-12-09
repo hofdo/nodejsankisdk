@@ -19,7 +19,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
         case 27:
             // Battery Level received
             let level = data.readUInt16(2);
-            client.publish("Anki/Car/" + vehicle.id + "/S/Version", JSON.stringify({
+            client.publish("Anki/Car/" + vehicle.id + "/S/BatteryLevel", JSON.stringify({
                     "timestamp": Date.now,
                     "value": level
                 }
@@ -50,6 +50,16 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 + " last_exe_lane_change_cmd: " + last_exe_lane_change_cmd_id + "\n"
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed + "\n"
                 + " last_des_speed: " + last_des_speed  + "\n" );
+
+            client.publish("Anki/Car/" + vehicle.id + "/S/Lane/Actual", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": offset_pos
+            }))
+
+            client.publish("Anki/Car/" + target + "/S/Speed/Actual", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": speed
+            }))
 
             client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
                     "timestamp": Date.now(),

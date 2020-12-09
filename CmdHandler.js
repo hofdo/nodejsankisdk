@@ -1,7 +1,7 @@
 let message = "";
 let isGlobal = false;
 
-const handleCmd = (target, command, vehicles) => {
+const handleCmd = (target, command, vehicles, client) => {
     if (target.toLowerCase() === 'global') isGlobal = true;
     let writer = vehicles[target]['writer'];
     console.log(Object.keys(command));
@@ -15,7 +15,13 @@ const handleCmd = (target, command, vehicles) => {
                    writer.write(getSpeedMessage(key, speed, acceleration));
                 })
             }
-            else writer.write(getSpeedMessage(target, speed, acceleration));
+            else {
+                writer.write(getSpeedMessage(target, speed, acceleration));
+                client.publish("Anki/Car/" + target + "/S/Speed/Desired", JSON.stringify({
+                    "timestamp": Date.now(),
+                    "value": speed
+                }))
+            }
             break;
         case "lane":
             let offset = command["offset"];
@@ -24,7 +30,13 @@ const handleCmd = (target, command, vehicles) => {
                     writer.write(getLaneMessage(key, offset));
                 })
             }
-            else writer.write(getLaneMessage(target, offset));
+            else {
+                writer.write(getLaneMessage(target, offset));
+                client.publish("Anki/Car/" + target + "/S/Lane/Desired", JSON.stringify({
+                    "timestamp": Date.now(),
+                    "value": offset
+                }))
+            }
             break;
         case "turn":
             let turnType = command["turn"]["type"];
