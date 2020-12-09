@@ -34,13 +34,10 @@ const handleReturnMsg = (data, isNot, vehicle, client) => {
             let offset_pos = data.readFloatLE(4);
             let speed = data.readUInt16LE(8);
             let flag = data.readUInt8(10);
-            let isReverse = false;
             let last_rec_lane_change_cmd_id = data.readUInt8(11);
             let last_exe_lane_change_cmd_id = data.readUInt8(12);
-            let last_des_lane_change_speed = data.readUInt8(13);
-            let last_des_speed = data.readUInt8(15);
-
-            if (flag.toString(16) === '0x40') isReverse = true;
+            let last_des_lane_change_speed = data.readUInt16LE(13);
+            let last_des_speed = data.readUInt16LE(15);
 
             console.log("Vehicle ID: " + vehicle.id + "\n"
                 + " Message_id: " + messageID + "\n"
@@ -52,7 +49,8 @@ const handleReturnMsg = (data, isNot, vehicle, client) => {
                 + " last_rec_lane_change_cmd: " + last_rec_lane_change_cmd_id + "\n"
                 + " last_exe_lane_change_cmd: " + last_exe_lane_change_cmd_id + "\n"
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed + "\n"
-                + " last_des_speed: " + last_des_speed + "\n");
+                + " last_des_speed: " + last_des_speed  + "\n"
+                + " hex: " + data.readUInt8(10).toString(16) );
 
             client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
                     "timestamp": Date.now(),
@@ -73,6 +71,12 @@ const handleReturnMsg = (data, isNot, vehicle, client) => {
             let last_recv_lane_change_id = data.readUInt8(8);
             let last_exec_lane_change_id = data.readUInt8(9);
             let last_desired_lane_change_speed_mm_per_sec = data.readUInt16LE(10);
+            let ave_follow_line_drift_pixels = data.readInt8(12);
+            let had_lane_change_activity = data.readUInt8(13);
+            let uphill_counter = data.readUInt8(14);
+            let downhill_counter = data.readUInt8(15);
+            let left_wheel_dist_cm = data.readUInt8(16);
+            let right_wheel_dist_cm = data.readUInt8(17);
 
             console.log("Vehicle ID " + vehicle.id + "\n"
                 + "Message_id: " + messageID + "\n"
@@ -82,6 +86,12 @@ const handleReturnMsg = (data, isNot, vehicle, client) => {
                 + ' last_recv_lane_change_id: '  + last_recv_lane_change_id + "\n"
                 + ' last_exec_lane_change_id: '  + last_exec_lane_change_id + "\n"
                 + ' last_desired_lane_change_speed_mm_per_sec: '  + last_desired_lane_change_speed_mm_per_sec + "\n"
+                + ' ave_follow_line_drift_pixels: '  + ave_follow_line_drift_pixels + "\n"
+                + ' had_lane_change_activity: '  + had_lane_change_activity + "\n"
+                + ' uphill_counter: '  + uphill_counter + "\n"
+                + ' downhill_counter: '  + downhill_counter + "\n"
+                + ' left_wheel_dist_cm: '  + left_wheel_dist_cm + "\n"
+                + ' right_wheel_dist_cm: '  + right_wheel_dist_cm + "\n"
             );
 
             client.publish("Anki/Car/" + vehicle.id + "/S/TransitionInfo", JSON.stringify({

@@ -254,7 +254,13 @@ function dataListener(data, isNotification, vehicle){
                 + " hex: " + data.readUInt8(10).toString(16) );
 
             client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
-                    "timestamp": Date.now()
+                    "timestamp": Date.now(),
+                    "locationId": pieceLocation,
+                    "roadPieceId": pieceId,
+                    "reverse": isReverse,
+                    "lane": offset_pos,
+                    "speed": speed,
+                    "lastDesSpeed": last_des_speed
                 }
             ));
             break;
@@ -289,8 +295,11 @@ function dataListener(data, isNotification, vehicle){
                 + ' right_wheel_dist_cm: '  + right_wheel_dist_cm + "\n"
             );
 
-            client.publish("controller/trans_update", JSON.stringify({
-
+            client.publish("Anki/Car/" + vehicle.id + "/S/TransitionInfo", JSON.stringify({
+                    "timestamp": Date.now,
+                    "roadPieceId": road_piece_idx,
+                    "prevRoadPieceId": road_piece_idx_prev,
+                    "lane": offset_trans,
                 }
             ));
             break;
@@ -312,8 +321,10 @@ function dataListener(data, isNotification, vehicle){
                 + " mm_transition_bar: " + data.readUInt16LE(9) + "\n"
                 + " mm_insection_code: " + data.readUInt16LE(11)); + "\n"
 
-            client.publish("controller/delocalized", JSON.stringify({
-
+            client.publish("Anki/Car/" + vehicle.id + "/S/IntersectionInfo", JSON.stringify({
+                    "timestamp": Date.now(),
+                    "intersectionCode": intersection_code,
+                    "isExiting": is_exiting
                 }
             ));
             break;
