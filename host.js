@@ -178,7 +178,8 @@ function handleMsg(data, isnNot, vehicle){
                 + " last_rec_lane_change_cmd: " + last_rec_lane_change_cmd_id
                 + " last_exe_lane_change_cmd: " + last_exe_lane_change_cmd_id
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed
-                + " last_des_speed: " + last_des_speed);
+                + " last_des_speed: " + last_des_speed
+                + " buffer_raw: " + data.toString('hex'));
 
             client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
                     "timestamp": Date.now()
