@@ -99,7 +99,7 @@ client.on("message", function (topic, message){
  */
 
 eventEmitter.on('pingEvent', function (data) {
-    console.log(data[0])
+    //console.log(data[0])
 })
 
 /**
