@@ -550,7 +550,7 @@ noble.on('discover', function (device){
         'reader': null
     }
     console.log("Scanned: " + device.id);
-    let manufacturerData = peripheral.advertisement.manufacturerData;
+    let manufacturerData = device.advertisement.manufacturerData;
     console.log(manufacturerData)
     connect(device_id);
 });
