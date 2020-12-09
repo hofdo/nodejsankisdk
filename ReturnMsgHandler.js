@@ -5,7 +5,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
     switch (messageID){
         case 23:
             // Ping Responses
-            eventEmitter.emit('pingEvent', vehicle.id)
+            eventEmitter.emit('pingEvent', "Hello")
             break;
         case 25:
             // Version received
