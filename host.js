@@ -2,8 +2,8 @@ let mqtt = require('mqtt');
 let uuid = require('uuid');
 let noble = require('@abandonware/noble');
 
-const {handleReturnMsg} = require("/ReturnMsgHandler").handleReturnMsg();
-const {handleCmd} = require("/CmdHandler").handleCmd();
+const {handleReturnMsg} = require("./ReturnMsgHandler").handleReturnMsg();
+const {handleCmd} = require("./CmdHandler").handleCmd();
 
 const connectionID = "host" + uuid.v4();
 //const hostID = uuid.v4();
