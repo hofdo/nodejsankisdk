@@ -60,7 +60,6 @@ client.on("message", function (topic, message){
     console.log(topic)
     if ( RegExp("Anki[\/]Host[\/]host[\/]I").test(topic)) {
         let connecting = msg["connecting"];
-        console.log(connecting)
         if (connecting) {
             //scan and connect
             noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
@@ -69,8 +68,9 @@ client.on("message", function (topic, message){
                 let payload = [];
                 Object.keys(vehicles).forEach(function (key){
                     payload.push(key);
+                    connect(key)
                 })
-                client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(payload));
+                client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(payload), {});
             }, 2000);
         } else {
             Object.keys(vehicles).forEach(function (key){
@@ -109,8 +109,6 @@ noble.on('discover', function (device){
     }), {
 
     })
-    connect(device.id)
-    client.publish("Anki/Car/" + device.id + "/S/Cars", JSON.stringify(cars.toString()))
 });
 
 /**
@@ -119,7 +117,8 @@ noble.on('discover', function (device){
  */
 
 function connect(device_id){
-    let vehicle = noble._peripherals[device_id]
+    //let vehicle = noble._peripherals[device_id]
+    let vehicle = vehicles[device_id]["device"];
     vehicle.connect(function(error) {
         vehicle.discoverSomeServicesAndCharacteristics(
             ["be15beef6186407e83810bd89c4d8df4"],
