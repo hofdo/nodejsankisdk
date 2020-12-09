@@ -355,10 +355,9 @@ function dataListener(data, isNotification, vehicle){
                     }
                 }
             ));
-
             break;
         case 63:
-            console.log("messageid: " + messageID + " Buffer: " + data)
+            console.log("messageid: " + messageID + " Buffer: " + data.toString('hex'))
             break;
         default:
             // Not definded
