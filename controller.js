@@ -273,7 +273,7 @@ function dataListener(data, isNotification, vehicle){
             let left_wheel_dist_cm = data.readUInt8(16);
             let right_wheel_dist_cm = data.readUInt8(17);
 
-            console.log("Vehicle ID " + vehicle.id
+            console.log("Vehicle ID " + vehicle.id + "\n"
                 + "Message_id: " + messageID + "\n"
                 + " road_piece_idx: " + road_piece_idx + "\n"
                 + " road_piece_idx_prev: " + road_piece_idx_prev + "\n"
@@ -296,9 +296,26 @@ function dataListener(data, isNotification, vehicle){
             break;
         case 42:
             //  ANKI_VEHICLE_MSG_V2C_LOCALIZATION_INTERSECTION_UPDATE
-            console.log(vehicle.id + "Message_id: " + messageID + " road_piece_idx: " + data.readInt8(2) + " offset: "
-                + data.readFloatLE(3) + " intersection_code: " + data.readUInt8(7) + " is_exiting: " + data.readUInt8(8)
-                + " mm_transition_bar: " + data.readUInt16LE(9) + " mm_insection_code: " + data.readUInt16LE(11));
+            let road_piece_idx_intersection = data.readInt8(2);
+            let offset = data.readFloatLE(3);
+            let intersection_code = data.readUInt8(7);
+            let is_exiting = data.readUInt8(8);
+            let mm_transition_bar = data.readUInt16LE(9);
+            let mm_intersection_code = data.readUInt16LE(11);
+
+            console.log(vehicle.id + "Message_id: "  + "\n"
+                + messageID + "\n"
+                + " road_piece_idx: " + data.readInt8(2) + "\n"
+                + " offset: " + data.readFloatLE(3) + "\n"
+                + " intersection_code: " + data.readUInt8(7) + "\n"
+                + " is_exiting: " + data.readUInt8(8) + "\n"
+                + " mm_transition_bar: " + data.readUInt16LE(9) + "\n"
+                + " mm_insection_code: " + data.readUInt16LE(11)); + "\n"
+
+            client.publish("controller/delocalized", JSON.stringify({
+
+                }
+            ));
             break;
         case 43:
             // ANKI_VEHICLE_MSG_V2C_VEHICLE_DELOCALIZED

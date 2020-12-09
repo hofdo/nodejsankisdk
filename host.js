@@ -218,9 +218,13 @@ function handleMsg(data, isnNot, vehicle){
             let mm_transition_bar = data.readUInt16LE(9);
             let mm_intersection_code = data.readUInt16LE(11);
 
-            console.log(vehicle.id + "Message_id: " + messageID + " road_piece_idx: " + data.readInt8(2) + " offset: "
-                + data.readFloatLE(3) + " intersection_code: " + data.readUInt8(7) + " is_exiting: " + data.readUInt8(8)
-                + " mm_transition_bar: " + data.readUInt16LE(9) + " mm_insection_code: " + data.readUInt16LE(11));
+            console.log(vehicle.id + "Message_id: " + messageID
+                + " road_piece_idx: " + data.readInt8(2)
+                + " offset: " + data.readFloatLE(3)
+                + " intersection_code: " + data.readUInt8(7)
+                + " is_exiting: " + data.readUInt8(8)
+                + " mm_transition_bar: " + data.readUInt16LE(9)
+                + " mm_insection_code: " + data.readUInt16LE(11));
 
             client.publish("controller/delocalized", JSON.stringify({
 
