@@ -178,11 +178,19 @@ function handleMsg(data, isnNot, vehicle){
                 + " last_rec_lane_change_cmd: " + last_rec_lane_change_cmd_id
                 + " last_exe_lane_change_cmd: " + last_exe_lane_change_cmd_id
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed
-                + " last_des_speed: " + last_des_speed );
+                + " last_des_speed: " + last_des_speed
+                + " hex: " + data.readUInt8(10).toString('hex') );
 
             client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
-                    "timestamp": Date.now()
-            }
+                "timestamp": Date.now(),
+                "locationId": pieceLocation,
+                "roadPieceId": pieceId,
+                "reverse": Boolean,
+                "lane": float,
+                "speed": int
+
+
+                }
             ));
             break;
         case 41:
@@ -204,7 +212,7 @@ function handleMsg(data, isnNot, vehicle){
                 + ' last_desired_lane_change_speed_mm_per_sec: '  + last_desired_lane_change_speed_mm_per_sec
                 );
 
-            client.publish("controller/trans_update", JSON.stringify({
+            client.publish("Anki/Car/" + vehicle.id + "/S/TransitionInfo", JSON.stringify({
 
                 }
             ));
@@ -218,17 +226,18 @@ function handleMsg(data, isnNot, vehicle){
             let mm_transition_bar = data.readUInt16LE(9);
             let mm_intersection_code = data.readUInt16LE(11);
 
-            console.log(vehicle.id + "Message_id: " + messageID
-                + " road_piece_idx: " + data.readInt8(2)
-                + " offset: " + data.readFloatLE(3)
-                + " intersection_code: " + data.readUInt8(7)
-                + " is_exiting: " + data.readUInt8(8)
-                + " mm_transition_bar: " + data.readUInt16LE(9)
-                + " mm_insection_code: " + data.readUInt16LE(11));
+            console.log(vehicle.id + "Message_id: "  + "\n"
+                + messageID + "\n"
+                + " road_piece_idx: " + data.readInt8(2) + "\n"
+                + " offset: " + data.readFloatLE(3) + "\n"
+                + " intersection_code: " + data.readUInt8(7) + "\n"
+                + " is_exiting: " + data.readUInt8(8) + "\n"
+                + " mm_transition_bar: " + data.readUInt16LE(9) + "\n"
+                + " mm_insection_code: " + data.readUInt16LE(11)); + "\n"
 
-            client.publish("controller/delocalized", JSON.stringify({
+            client.publish("Anki/Car/" + vehicle.id + "/S/IntersectionInfo", JSON.stringify({
 
-            }
+                }
             ));
             break;
         case 43:

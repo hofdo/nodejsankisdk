@@ -251,8 +251,7 @@ function dataListener(data, isNotification, vehicle){
                 + " last_exe_lane_change_cmd: " + last_exe_lane_change_cmd_id + "\n"
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed + "\n"
                 + " last_des_speed: " + last_des_speed  + "\n"
-                + " buffer_raw: " + data.toString('hex')
-            );
+                + " hex: " + data.readUInt8(10).toString('hex') );
 
             client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
                     "timestamp": Date.now()
