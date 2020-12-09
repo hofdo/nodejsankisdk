@@ -1,5 +1,6 @@
 const handleReturnMsg = (data, isNot, vehicle, client) => {
     let messageID = data.readUInt8(1);
+    let isReverse = false;
 
     switch (messageID){
         case 23:
@@ -39,6 +40,8 @@ const handleReturnMsg = (data, isNot, vehicle, client) => {
             let last_des_lane_change_speed = data.readUInt16LE(13);
             let last_des_speed = data.readUInt16LE(15);
 
+            if (flag.toString(16) === "0x40") isReverse = true;
+
             console.log("Vehicle ID: " + vehicle.id + "\n"
                 + " Message_id: " + messageID + "\n"
                 + ' offset: '  + offset_pos + "\n"
@@ -49,14 +52,13 @@ const handleReturnMsg = (data, isNot, vehicle, client) => {
                 + " last_rec_lane_change_cmd: " + last_rec_lane_change_cmd_id + "\n"
                 + " last_exe_lane_change_cmd: " + last_exe_lane_change_cmd_id + "\n"
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed + "\n"
-                + " last_des_speed: " + last_des_speed  + "\n"
-                + " hex: " + data.readUInt8(10).toString(16) );
+                + " last_des_speed: " + last_des_speed  + "\n" );
 
             client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
                     "timestamp": Date.now(),
                     "locationId": pieceLocation,
                     "roadPieceId": pieceId,
-                    "reverse": isReverse,
+                   // "reverse": isReverse,
                     "lane": offset_pos,
                     "speed": speed,
                     "lastDesSpeed": last_des_speed
