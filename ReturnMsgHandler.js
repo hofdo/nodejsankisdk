@@ -1,11 +1,11 @@
-const handleReturnMsg = (data, isNot, vehicle, client) => {
+const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
     let messageID = data.readUInt8(1);
     let isReverse = false;
 
     switch (messageID){
         case 23:
             // Ping Responses
-
+            eventEmitter.emit('pingEvent', vehicle)
             break;
         case 25:
             // Version received
@@ -148,7 +148,12 @@ const handleReturnMsg = (data, isNot, vehicle, client) => {
         case 63:
             let isOnTrack = data.readUInt8(2);
             let isCharging = data.readUInt8(3)
-
+            client.publish("Anki/Car/" + vehicle.id + "/S/CarStatus", JSON.stringify({
+                "timestamp": Date.now(),
+                "online": true,
+                "charging": isOnTrack,
+                "onTrack": isCharging
+            }))
             break;
         default:
             // Not definded

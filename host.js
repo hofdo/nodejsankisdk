@@ -1,13 +1,17 @@
 let mqtt = require('mqtt');
 let uuid = require('uuid');
 let noble = require('@abandonware/noble');
+const events = require('events');
 
 const {handleReturnMsg} = require("./ReturnMsgHandler");
 const {handleCmd} = require("./CmdHandler");
+const {getModel} = require("./models");
 
 const connectionID = "host" + uuid.v4();
 //const hostID = uuid.v4();
 const hostID = "host";
+
+let eventEmitter = new events.EventEmitter();
 
 let vehicles = new Map();
 let cars = [];
@@ -20,6 +24,9 @@ setInterval(function (){
         "timestamp": Date.now(),
         "value": false
     }))
+    Object.keys(vehicles).forEach(function (key){
+        handleCmd(key, "ping", vehicles)
+    })
 }, 5000);
 
 /**
@@ -88,7 +95,13 @@ client.on("message", function (topic, message){
     }
 });
 
-noble.on("")
+/**
+ * Eventemitter Listener
+ */
+
+eventEmitter.on('pingEvent', (device) => {
+    console.log(device.id);
+})
 
 /**
  * Noble Listener
@@ -99,6 +112,8 @@ noble.on('discover', function (device){
         'id': device.id,
         'device': noble._peripherals[device.id],
         'connected': false,
+        'isOnTrack': false,
+        'isCharging': false,
         'writer': null,
         'reader': null
     }
@@ -114,16 +129,13 @@ noble.on('discover', function (device){
     }), {
 
     })
-    let manufacturerData = peripheral.advertisement.manufacturerData;
-    console.log(manufacturerData.toString('hex'))
-
+    let manufacturerData = device.advertisement.manufacturerData;
     client.publish("Anki/Car/" + device.id + "/S/Information", JSON.stringify({
-        "address": "",
-        "identifier": "",
-        "model": "",
-        "modelId": "",
-        "productId": ""
-
+        "address": device.address,
+        "identifier": manufacturerData.readUInt32LE(0),
+        "model": getModel(manufacturerData.readUInt8(4)),
+        "modelId": manufacturerData.readUInt8(4),
+        "productId": manufacturerData.readUInt16LE(6)
     }), {
 
     })
@@ -148,7 +160,7 @@ function connect(device_id){
                 vehicles[device_id]['writer'] = characteristics[0];
                 vehicles[device_id]['reader'] = characteristics[1];
                 vehicle.reader.notify(true);
-                vehicle.reader.on('data', (data, isNot) => handleReturnMsg(data, isNot, vehicle, client));
+                vehicle.reader.on('data', (data, isNot) => handleReturnMsg(data, isNot, vehicle, client, eventEmitter));
                 vehicles[device_id]['connected'] = true;
                 message = new Buffer(4);
                 message.writeUInt8(0x03, 0);
