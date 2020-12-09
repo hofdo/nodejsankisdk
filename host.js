@@ -88,6 +88,8 @@ client.on("message", function (topic, message){
     }
 });
 
+noble.on("")
+
 /**
  * Noble Listener
  */
@@ -112,6 +114,20 @@ noble.on('discover', function (device){
     }), {
 
     })
+    let manufacturerData = peripheral.advertisement.manufacturerData;
+    console.log(manufacturerData.toString('hex'))
+
+    client.publish("Anki/Car/" + device.id + "/S/Information", JSON.stringify({
+        "address": "",
+        "identifier": "",
+        "model": "",
+        "modelId": "",
+        "productId": ""
+
+    }), {
+
+    })
+
 });
 
 /**

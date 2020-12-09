@@ -357,11 +357,9 @@ function dataListener(data, isNotification, vehicle){
             ));
             break;
         case 63:
-            console.log("messageid: " + messageID
-                + " Buffer: " + data.toString('hex')
-                + " onTrack: " + data.readUInt8(2)
-                + " isCharging: " + data.readUInt8(3)
-            )
+            let isOnTrack = data.readUInt8(2);
+            let isCharging = data.readUInt8(3)
+
             break;
         default:
             // Not definded
@@ -552,5 +550,7 @@ noble.on('discover', function (device){
         'reader': null
     }
     console.log("Scanned: " + device.id);
+    let manufacturerData = peripheral.advertisement.manufacturerData;
+    console.log(manufacturerData.toString('hex'))
     connect(device_id);
 });

@@ -5,10 +5,7 @@ const handleReturnMsg = (data, isNot, vehicle, client) => {
     switch (messageID){
         case 23:
             // Ping Responses
-            client.publish("controller/ping", JSON.stringify({
 
-                }
-            ));
             break;
         case 25:
             // Version received
@@ -147,6 +144,11 @@ const handleReturnMsg = (data, isNot, vehicle, client) => {
                     }
                 }
             ));
+            break;
+        case 63:
+            let isOnTrack = data.readUInt8(2);
+            let isCharging = data.readUInt8(3)
+
             break;
         default:
             // Not definded
