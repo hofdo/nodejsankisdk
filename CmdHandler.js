@@ -4,10 +4,11 @@ let isGlobal = false;
 const handleCmd = (target, command, vehicles) => {
     if (target.toLowerCase() === 'global') isGlobal = true;
     let writer = vehicles[target]['writer'];
+    console.log(Object.keys(command));
     switch (Object.keys(command)){
+        case "acceleration":
         case "speed":
             let speed = command["speed"];
-            console.log(speed);
             let acceleration = command["acceleration"]
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
