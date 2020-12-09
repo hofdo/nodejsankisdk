@@ -196,7 +196,7 @@ client.on("message", function (topic, message) {
  */
 
 function dataListener(data, isNotification, vehicle){
-    console.log(util.format("%s;%s\n", vehicle.id, data.readUInt8(1)));
+    //console.log(util.format("%s;%s\n", vehicle.id, data.readUInt8(1)));
     let messageID = data.readUInt8(1);
 
     switch (messageID){
@@ -240,6 +240,7 @@ function dataListener(data, isNotification, vehicle){
             let last_des_lane_change_speed = data.readUInt16LE(13);
             let last_des_speed = data.readUInt16LE(15);
 
+            /*
             console.log("Vehicle ID: " + vehicle.id + "\n"
                 + " Message_id: " + messageID + "\n"
                 + ' offset: '  + offset_pos + "\n"
@@ -252,6 +253,7 @@ function dataListener(data, isNotification, vehicle){
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed + "\n"
                 + " last_des_speed: " + last_des_speed  + "\n"
                 + " hex: " + data.readUInt8(10).toString(16) );
+             */
 
             client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
                     "timestamp": Date.now(),
@@ -279,6 +281,7 @@ function dataListener(data, isNotification, vehicle){
             let left_wheel_dist_cm = data.readUInt8(16);
             let right_wheel_dist_cm = data.readUInt8(17);
 
+            /*
             console.log("Vehicle ID " + vehicle.id + "\n"
                 + "Message_id: " + messageID + "\n"
                 + " road_piece_idx: " + road_piece_idx + "\n"
@@ -294,6 +297,8 @@ function dataListener(data, isNotification, vehicle){
                 + ' left_wheel_dist_cm: '  + left_wheel_dist_cm + "\n"
                 + ' right_wheel_dist_cm: '  + right_wheel_dist_cm + "\n"
             );
+
+             */
 
             client.publish("Anki/Car/" + vehicle.id + "/S/TransitionInfo", JSON.stringify({
                     "timestamp": Date.now,
@@ -312,6 +317,7 @@ function dataListener(data, isNotification, vehicle){
             let mm_transition_bar = data.readUInt16LE(9);
             let mm_intersection_code = data.readUInt16LE(11);
 
+            /*
             console.log(vehicle.id + "Message_id: "  + "\n"
                 + messageID + "\n"
                 + " road_piece_idx: " + data.readInt8(2) + "\n"
@@ -319,7 +325,9 @@ function dataListener(data, isNotification, vehicle){
                 + " intersection_code: " + data.readUInt8(7) + "\n"
                 + " is_exiting: " + data.readUInt8(8) + "\n"
                 + " mm_transition_bar: " + data.readUInt16LE(9) + "\n"
-                + " mm_insection_code: " + data.readUInt16LE(11)); + "\n"
+                + " mm_insection_code: " + data.readUInt16LE(11));
+
+             */
 
             client.publish("Anki/Car/" + vehicle.id + "/S/IntersectionInfo", JSON.stringify({
                     "timestamp": Date.now(),
@@ -350,7 +358,7 @@ function dataListener(data, isNotification, vehicle){
 
             break;
         case 63:
-            console.log(data.toString())
+            console.log("messageid: " + messageID + " Buffer: " + data)
             break;
         default:
             // Not definded
