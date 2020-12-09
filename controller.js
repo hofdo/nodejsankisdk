@@ -350,8 +350,7 @@ function dataListener(data, isNotification, vehicle){
 
             break;
         case 63:
-            console.log(data.getBoolean(2))
-            console.log(data.getBoolean(3))
+            console.log(data.toString())
             break;
         default:
             // Not definded
