@@ -551,6 +551,6 @@ noble.on('discover', function (device){
     }
     console.log("Scanned: " + device.id);
     let manufacturerData = peripheral.advertisement.manufacturerData;
-    console.log(manufacturerData.toString('hex'))
+    console.log(manufacturerData)
     connect(device_id);
 });
