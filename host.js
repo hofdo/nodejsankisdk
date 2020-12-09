@@ -98,8 +98,8 @@ client.on("message", function (topic, message){
  * Eventemitter Listener
  */
 
-eventEmitter.on('pingEvent', (id) => {
-    console.log(id);
+eventEmitter.on('pingEvent', function (data) {
+    console.log(data.toString())
 })
 
 /**
