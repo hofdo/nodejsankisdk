@@ -24,9 +24,7 @@ setInterval(function (){
         "timestamp": Date.now(),
         "value": false
     }))
-    Object.keys(vehicles).forEach(function (key){
-        handleCmd(key, "ping", vehicles, client)
-    })
+    console.log("wat");
 }, 5000);
 
 /**
