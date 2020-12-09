@@ -259,14 +259,25 @@ function dataListener(data, isNotification, vehicle){
             break;
         case 41:
             // ANKI_VEHICLE_MSG_V2C_LOCALIZATION_TRANSITION_UPDATE
-            let offset_trans = data.readFloatLE(4)
-            console.log(vehicle.id + "Message_id: " + messageID + ' offset: '  + offset_trans);
+            let road_piece_idx = data.readInt8(2);
+            let road_piece_idx_prev = data.readInt8(3);
+            let offset_trans = data.readFloatLE(4);
+            let last_recv_lane_change_id = data.readUInt8(8);
+            let last_exec_lane_change_id = data.readUInt8(9);
+            let last_desired_lane_change_speed_mm_per_sec = data.readUInt16LE(10);
+
+            console.log("Vehicle ID " + vehicle.id
+                + "Message_id: " + messageID
+                + " road_piece_idx: " + road_piece_idx
+                + " road_piece_idx_prev: " + road_piece_idx_prev
+                + ' offset: '  + offset_trans
+                + ' last_recv_lane_change_id: '  + last_recv_lane_change_id
+                + ' last_exec_lane_change_id: '  + last_exec_lane_change_id
+                + ' last_desired_lane_change_speed_mm_per_sec: '  + last_desired_lane_change_speed_mm_per_sec
+            );
+
             client.publish("controller/trans_update", JSON.stringify({
-                    "command": "trams_update_res",
-                    "target": vehicle.id,
-                    "data": {
-                        "offset": offset_trans
-                    }
+
                 }
             ));
             break;
