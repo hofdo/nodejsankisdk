@@ -551,6 +551,10 @@ noble.on('discover', function (device){
     }
     console.log("Scanned: " + device.id);
     let manufacturerData = device.advertisement.manufacturerData;
-    console.log(manufacturerData)
+    console.log(
+        "Identifier: " + manufacturerData.readUInt32LE(0)
+        + " ModelID: " + manufacturerData.readUInt8(4)
+        + " Reserved:" + manufacturerData.readUInt8(5)
+        + " Product_id: " + manufacturerData.readUInt16LE(6))
     connect(device_id);
 });
