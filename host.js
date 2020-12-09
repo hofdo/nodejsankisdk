@@ -2,6 +2,9 @@ let mqtt = require('mqtt');
 let uuid = require('uuid');
 let noble = require('@abandonware/noble');
 
+const {handleReturnMsg} = require("ReturnMsgHandler");
+const {handleCmd} = require("CmdHandler");
+
 const connectionID = "host" + uuid.v4();
 //const hostID = uuid.v4();
 const hostID = "host";
@@ -19,6 +22,11 @@ setInterval(function (){
     }))
 }, 5000);
 
+/**
+ * Establish connection
+ * @type {MqttClient}
+ */
+
 let client = mqtt.connect('mqtt://192.168.1.160', {
     clientId: connectionID,
     protocolId: 'MQIsdp',
@@ -33,12 +41,18 @@ let client = mqtt.connect('mqtt://192.168.1.160', {
     }
 });
 
+/**
+ * MQTT Listener
+ */
+
 client.on("connect", function (){
     client.subscribe("Anki/Host/" + hostID + "/I/#");
     client.subscribe("Anki/Car/+/I/#");
     client.subscribe("Anki/Car/I");
     client.subscribe("Anki/Service/I");
 });
+
+client.on("error",function(error){ console.log("Can't connect"+error)});
 
 client.on("message", function (topic, message){
     let msg = JSON.parse(message.toString());
@@ -56,19 +70,24 @@ client.on("message", function (topic, message){
                 Object.keys(vehicles).forEach(function (key){
                     payload.push(key);
                 })
-                client.publish("controller/scanned", JSON.stringify(payload));
+                client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(payload));
             }, 2000);
         } else {
-            //disconnect
+            Object.keys(vehicles).forEach(function (key){
+                disconnect(key);
+            })
         }
     } else if (RegExp("Anki[\/]Car[\/].*[\/]I").test(topic)) {
-        handleCmd(topicSep[2], msg);
+        handleCmd(topicSep[2], msg, vehicles);
     } else if (RegExp("Anki[\/]Car[\/]I").test(topic)) {
-        handleCmd("global", msg);
+        handleCmd("global", msg, vehicles);
     } else {
     }
 });
 
+/**
+ * Noble Listener
+ */
 
 noble.on('discover', function (device){
     vehicles[device.id] = {
@@ -94,11 +113,10 @@ noble.on('discover', function (device){
     client.publish("Anki/Car/" + device.id + "/S/Cars", JSON.stringify(cars.toString()))
 });
 
-noble.on("scanStop", function (){
-
-})
-
-client.on("error",function(error){ console.log("Can't connect"+error)});
+/**
+ *
+ * @param device_id
+ */
 
 function connect(device_id){
     let vehicle = noble._peripherals[device_id]
@@ -112,7 +130,7 @@ function connect(device_id){
                 vehicles[device_id]['writer'] = characteristics[0];
                 vehicles[device_id]['reader'] = characteristics[1];
                 vehicle.reader.notify(true);
-                vehicle.reader.on('data', (data, isNot) => handleMsg(data, isNot, vehicle));
+                vehicle.reader.on('data', (data, isNot) => handleReturnMsg(data, isNot, vehicle, client));
                 vehicles[device_id]['connected'] = true;
                 message = new Buffer(4);
                 message.writeUInt8(0x03, 0);
@@ -127,168 +145,14 @@ function connect(device_id){
     });
 }
 
-function handleMsg(data, isnNot, vehicle){
-    let messageID = data.readUInt8(1);
+/**
+ *
+ * @param device_id
+ */
 
-    switch (messageID){
-        case 23:
-            // Ping Responses
-            client.publish("controller/ping", JSON.stringify({
-
-                }
-            ));
-            break;
-        case 25:
-            // Version received
-            let version = data.readUInt16(2);
-            client.publish("Anki/Car/" + vehicle.id + "/S/Version", JSON.stringify({
-                "timestamp": Date.now,
-                "value": version
-                }
-            ));
-            break;
-        case 27:
-            // Battery Level received
-            let level = data.readUInt16(2);
-            client.publish("Anki/Car/" + vehicle.id + "/S/Version", JSON.stringify({
-                "timestamp": Date.now,
-                "value": level
-                }
-            ));
-            break;
-        case 39:
-            // ANKI_VEHICLE_MSG_V2C_LOCALIZATION_POSITION_UPDATE
-            let pieceLocation = data.readUInt8(2);
-            let pieceId = data.readUInt8(3);
-            let offset_pos = data.readFloatLE(4);
-            let speed = data.readUInt16LE(8);
-            let flag = data.readUInt8(10);
-            let last_rec_lane_change_cmd_id = data.readUInt8(11);
-            let last_exe_lane_change_cmd_id = data.readUInt8(12);
-            let last_des_lane_change_speed = data.readUInt8(13);
-            let last_des_speed = data.readUInt8(15);
-
-            console.log("Vehicle ID: " + vehicle.id
-                + " Message_id: " + messageID
-                + ' offset: '  + offset_pos
-                + ' speed: ' + speed
-                + " flag: " + flag
-                + ' - pieceId: '  + pieceId
-                + ' pieceLocation: ' + pieceLocation
-                + " last_rec_lane_change_cmd: " + last_rec_lane_change_cmd_id
-                + " last_exe_lane_change_cmd: " + last_exe_lane_change_cmd_id
-                + " last_des_lane_change_speed: " + last_des_lane_change_speed
-                + " last_des_speed: " + last_des_speed
-                + " hex: " + data.readUInt8(10).toString('hex') );
-
-            client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
-                "timestamp": Date.now(),
-                "locationId": pieceLocation,
-                "roadPieceId": pieceId,
-                "reverse": Boolean,
-                "lane": float,
-                "speed": int
-
-
-                }
-            ));
-            break;
-        case 41:
-            // ANKI_VEHICLE_MSG_V2C_LOCALIZATION_TRANSITION_UPDATE
-            let road_piece_idx = data.readInt8(2);
-            let road_piece_idx_prev = data.readInt8(3);
-            let offset_trans = data.readFloatLE(4);
-            let last_recv_lane_change_id = data.readUInt8(8);
-            let last_exec_lane_change_id = data.readUInt8(9);
-            let last_desired_lane_change_speed_mm_per_sec = data.readUInt16LE(10);
-
-            console.log("Vehicle ID " + vehicle.id
-                + "Message_id: " + messageID
-                + " road_piece_idx: " + road_piece_idx
-                + " road_piece_idx_prev: " + road_piece_idx_prev
-                + ' offset: '  + offset_trans
-                + ' last_recv_lane_change_id: '  + last_recv_lane_change_id
-                + ' last_exec_lane_change_id: '  + last_exec_lane_change_id
-                + ' last_desired_lane_change_speed_mm_per_sec: '  + last_desired_lane_change_speed_mm_per_sec
-                );
-
-            client.publish("Anki/Car/" + vehicle.id + "/S/TransitionInfo", JSON.stringify({
-
-                }
-            ));
-            break;
-        case 42:
-            //  ANKI_VEHICLE_MSG_V2C_LOCALIZATION_INTERSECTION_UPDATE
-            let road_piece_idx_intersection = data.readInt8(2);
-            let offset = data.readFloatLE(3);
-            let intersection_code = data.readUInt8(7);
-            let is_exiting = data.readUInt8(8);
-            let mm_transition_bar = data.readUInt16LE(9);
-            let mm_intersection_code = data.readUInt16LE(11);
-
-            console.log(vehicle.id + "Message_id: "  + "\n"
-                + messageID + "\n"
-                + " road_piece_idx: " + data.readInt8(2) + "\n"
-                + " offset: " + data.readFloatLE(3) + "\n"
-                + " intersection_code: " + data.readUInt8(7) + "\n"
-                + " is_exiting: " + data.readUInt8(8) + "\n"
-                + " mm_transition_bar: " + data.readUInt16LE(9) + "\n"
-                + " mm_insection_code: " + data.readUInt16LE(11)); + "\n"
-
-            client.publish("Anki/Car/" + vehicle.id + "/S/IntersectionInfo", JSON.stringify({
-
-                }
-            ));
-            break;
-        case 43:
-            // ANKI_VEHICLE_MSG_V2C_VEHICLE_DELOCALIZED
-            client.publish("Anki/Car/" + vehicle.id + "/E/Delocalized", JSON.stringify({
-                    "timestamp": Date.now()
-                }
-            ));
-            break;
-        case 45:
-            // ANKI_VEHICLE_MSG_V2C_OFFSET_FROM_ROAD_CENTER_UPDATE
-            let offset_update = data.readFloatLE(2);
-            client.publish("controller/offset_update", JSON.stringify({
-                    "command": "trams_update_res",
-                    "target": vehicle.id,
-                    "data": {
-                        "offset": offset_update
-                    }
-                }
-            ));
-            break;
-        default:
-            // Not definded
-            break;
-    }
+function disconnect(device_id){
+    vehicles[device_id]['device'].disconnect();
+    vehicles[device_id]['connected'] = false;
+    console.log('Disconnected successfully!')
 }
 
-function handleCmd(target, command) {
-    switch (Object.keys(command)){
-        case "speed":
-            let speed = command["speed"];
-            let acceleration = command["acceleration"]
-
-            break;
-        case "lane":
-            let offset = command["offset"];
-            break;
-        case "turn":
-            let turnType = command["turn"]["type"];
-            let turnTime = command["turn"]["time"];
-            break;
-        case "Light":
-            let light = command["light"];
-            break;
-        case "battery":
-            let battery = command["battery"];
-            break;
-        case "version":
-            let version = command["version"];
-            break;
-        default:
-            break;
-    }
-}
