@@ -7,6 +7,7 @@ const handleCmd = (target, command, vehicles) => {
     switch (Object.keys(command)){
         case "speed":
             let speed = command["speed"];
+            console.log(speed);
             let acceleration = command["acceleration"]
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){

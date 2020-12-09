@@ -81,7 +81,6 @@ client.on("message", function (topic, message){
             })
         }
     } else if (RegExp("Anki[\/]Car[\/].*[\/]I").test(topic)) {
-        console.log(topicSep[2])
         handleCmd(topicSep[2], msg, vehicles);
     } else if (RegExp("Anki[\/]Car[\/]I").test(topic)) {
         handleCmd("global", msg, vehicles);
