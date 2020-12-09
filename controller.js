@@ -259,7 +259,7 @@ function dataListener(data, isNotification, vehicle){
                     "timestamp": Date.now(),
                     "locationId": pieceLocation,
                     "roadPieceId": pieceId,
-                    "reverse": isReverse,
+                   // "reverse": isReverse,
                     "lane": offset_pos,
                     "speed": speed,
                     "lastDesSpeed": last_des_speed
