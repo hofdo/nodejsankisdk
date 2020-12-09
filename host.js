@@ -64,7 +64,6 @@ client.on("error",function(error){ console.log("Can't connect"+error)});
 client.on("message", function (topic, message){
     let msg = JSON.parse(message.toString());
     let topicSep = topic.split("/");
-    console.log(topic)
     if ( RegExp("Anki[\/]Host[\/]host[\/]I").test(topic)) {
         let connecting = msg["connecting"];
         if (connecting) {
@@ -99,8 +98,8 @@ client.on("message", function (topic, message){
  * Eventemitter Listener
  */
 
-eventEmitter.on('pingEvent', (device) => {
-    console.log(device.id);
+eventEmitter.on('pingEvent', (id) => {
+    console.log(id);
 })
 
 /**
