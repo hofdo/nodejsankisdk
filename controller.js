@@ -196,7 +196,7 @@ client.on("message", function (topic, message) {
  */
 
 function dataListener(data, isNotification, vehicle){
-    // console.log(util.format("%s;%s\n", vehicle.id, data.readUInt8(1)));
+    console.log(util.format("%s;%s\n", vehicle.id, data.readUInt8(1)));
     let messageID = data.readUInt8(1);
 
     switch (messageID){

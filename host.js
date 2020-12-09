@@ -18,7 +18,7 @@ let device_id = null;
 setInterval(function (){
     client.publish("Anki/Host/' + hostID + '/S/HostStatus", JSON.stringify({
         "timestamp": Date.now(),
-        "value": true
+        "value": false
     }))
 }, 5000);
 
@@ -34,7 +34,7 @@ let client = mqtt.connect('mqtt://192.168.1.160', {
     will: {
         topic: 'Anki/Host/' + hostID + '/S/HostStatus',
         payload: JSON.stringify({
-            "value": false
+            "value": true
         }),
         retain: true,
         qos: 0
