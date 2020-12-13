@@ -19,8 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Fleshed out the commands">
+    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Fixed Connection error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReturnMsgHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/ReturnMsgHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/host.js" beforeDir="false" afterPath="$PROJECT_DIR$/host.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,231 +119,10 @@
       <workItem from="1606740521621" duration="3975000" />
       <workItem from="1606747878727" duration="13066000" />
       <workItem from="1606992378315" duration="244000" />
-      <workItem from="1606992702935" duration="53822000" />
-    </task>
-    <task id="LOCAL-00041" summary="Added Response code">
-      <created>1605825259513</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1605825259514</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Added Response code">
-      <created>1605825473545</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1605825473545</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Added Response code">
-      <created>1605826011516</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1605826011516</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Added Response code">
-      <created>1605826740528</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1605826740528</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Added Response code">
-      <created>1605826862850</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1605826862850</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Added Response code">
-      <created>1605862298061</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1605862298061</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Added Response code">
-      <created>1605864995028</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1605864995028</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Added Response code">
-      <created>1605876411509</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1605876411509</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Added Response code">
-      <created>1605876778790</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1605876778790</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Added Response code">
-      <created>1605878247099</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1605878247100</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Added Response code">
-      <created>1606752417196</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1606752417196</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Added Response code">
-      <created>1606754438972</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1606754438972</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Added Response code">
-      <created>1606755331104</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1606755331104</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Added Response code">
-      <created>1606755470238</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1606755470238</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Added Response code">
-      <created>1606755563762</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1606755563762</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Added Response code">
-      <created>1606755716949</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1606755716949</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Added Response code">
-      <created>1606755802685</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1606755802685</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Added Response code">
-      <created>1606755828965</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1606755828965</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Added Response code">
-      <created>1606755910935</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1606755910935</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Added Response code">
-      <created>1606774880424</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1606774880424</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Added Response code">
-      <created>1606776625623</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1606776625623</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Added Response code">
-      <created>1606776887034</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1606776887034</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Added Response code">
-      <created>1606777242698</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1606777242698</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Added Response code">
-      <created>1606777339208</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1606777339208</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Added Response code">
-      <created>1606777867484</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1606777867484</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Created host.js">
-      <created>1607439353801</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1607439353801</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Created host.js">
-      <created>1607439495927</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1607439495927</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Created host.js">
-      <created>1607439660681</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1607439660681</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Created host.js">
-      <created>1607439751018</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1607439751018</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Created host.js">
-      <created>1607439950618</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1607439950618</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Created host.js">
-      <created>1607440369565</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1607440369565</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Created host.js">
-      <created>1607440494592</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1607440494592</updated>
+      <workItem from="1606992702935" duration="71188000" />
+      <workItem from="1607599799256" duration="1821000" />
+      <workItem from="1607683028914" duration="2036000" />
+      <workItem from="1607775461400" duration="5352000" />
     </task>
     <task id="LOCAL-00073" summary="Created host.js">
       <created>1607443147220</created>
@@ -462,7 +243,231 @@
       <option name="project" value="LOCAL" />
       <updated>1607523885869</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Bugfixing">
+      <created>1607524360689</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1607524360689</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Bugfixing">
+      <created>1607524470382</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1607524470382</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Bugfixing">
+      <created>1607524590053</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1607524590053</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Bugfixing">
+      <created>1607524704592</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1607524704592</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Fixed Connection error">
+      <created>1607525547158</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1607525547158</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Fixed Connection error">
+      <created>1607526528482</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1607526528482</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Fixed Connection error">
+      <created>1607526805364</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1607526805364</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Fixed Connection error">
+      <created>1607526956888</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1607526956889</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Fixed Connection error">
+      <created>1607527065839</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1607527065839</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Fixed Connection error">
+      <created>1607529443710</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1607529443710</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Fixed Connection error">
+      <created>1607529574258</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1607529574258</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Fixed Connection error">
+      <created>1607533186087</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1607533186087</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Fixed Connection error">
+      <created>1607533506461</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1607533506461</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Fixed Connection error">
+      <created>1607533650685</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1607533650685</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Fixed Connection error">
+      <created>1607534305789</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1607534305789</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Fixed Connection error">
+      <created>1607534557030</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1607534557030</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Fixed Connection error">
+      <created>1607534743235</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1607534743235</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Fixed Connection error">
+      <created>1607534786715</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1607534786715</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Fixed Connection error">
+      <created>1607539937177</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1607539937177</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Fixed Connection error">
+      <created>1607540004145</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1607540004145</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Fixed Connection error">
+      <created>1607540084026</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1607540084026</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Fixed Connection error">
+      <created>1607540336313</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1607540336313</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Fixed Connection error">
+      <created>1607545306208</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1607545306208</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Fixed Connection error">
+      <created>1607547171534</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1607547171534</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Fixed Connection error">
+      <created>1607547400574</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1607547400574</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Fixed Connection error">
+      <created>1607547508706</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1607547508706</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Fixed Connection error">
+      <created>1607547620200</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1607547620200</updated>
+    </task>
+    <task id="LOCAL-00117" summary="Fixed Connection error">
+      <created>1607547885039</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1607547885039</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Fixed Connection error">
+      <created>1607548056152</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1607548056152</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Fixed Connection error">
+      <created>1607548223825</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1607548223825</updated>
+    </task>
+    <task id="LOCAL-00120" summary="Fixed Connection error">
+      <created>1607548328909</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1607548328909</updated>
+    </task>
+    <task id="LOCAL-00121" summary="Fixed Connection error">
+      <created>1607548483636</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1607548483636</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,7 +498,9 @@
     <MESSAGE value="Added Response code" />
     <MESSAGE value="Created host.js" />
     <MESSAGE value="Fleshed out the commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fleshed out the commands" />
+    <MESSAGE value="Bugfixing" />
+    <MESSAGE value="Fixed Connection error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Connection error" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

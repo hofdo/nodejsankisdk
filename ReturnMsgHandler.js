@@ -5,7 +5,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
     switch (messageID){
         case 23:
             // Ping Responses
-            eventEmitter.emit('pingEvent', "Hello");
+            //eventEmitter.emit('pingEvent', "Hello");
             console.log(messageID);
             break;
         case 25:
@@ -147,14 +147,8 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
         case 45:
             // ANKI_VEHICLE_MSG_V2C_OFFSET_FROM_ROAD_CENTER_UPDATE
             let offset_update = data.readFloatLE(2);
-            client.publish("controller/offset_update", JSON.stringify({
-                    "command": "trams_update_res",
-                    "target": vehicle.id,
-                    "data": {
-                        "offset": offset_update
-                    }
-                }
-            ));
+            console.log("Message_ID: " + messageID + "\n"
+                + " Offset: " + offset_update)
             break;
         case 63:
             let isOnTrack = data.readUInt8(2);

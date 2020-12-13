@@ -24,7 +24,6 @@ setInterval(function (){
         "timestamp": Date.now(),
         "value": false
     }))
-    console.log("wat");
 }, 5000);
 
 /**
@@ -54,7 +53,6 @@ client.on("connect", function (){
     client.subscribe("Anki/Host/" + hostID + "/I/#");
     client.subscribe("Anki/Car/+/I/#");
     client.subscribe("Anki/Car/I");
-    client.subscribe("Anki/Service/I");
 });
 
 client.on("error",function(error){ console.log("Can't connect"+error)});
