@@ -57,7 +57,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 "value": offset_pos
             }))
 
-            client.publish("Anki/Car/" + target + "/S/Speed/Actual", JSON.stringify({
+            client.publish("Anki/Car/" + vehicle.id + "/S/Speed/Actual", JSON.stringify({
                 "timestamp": Date.now(),
                 "value": speed
             }))
