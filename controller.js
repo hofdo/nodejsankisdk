@@ -240,7 +240,7 @@ function dataListener(data, isNotification, vehicle){
             let last_des_lane_change_speed = data.readUInt16LE(13);
             let last_des_speed = data.readUInt16LE(15);
 
-            /*
+
             console.log("Vehicle ID: " + vehicle.id + "\n"
                 + " Message_id: " + messageID + "\n"
                 + ' offset: '  + offset_pos + "\n"
@@ -253,7 +253,7 @@ function dataListener(data, isNotification, vehicle){
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed + "\n"
                 + " last_des_speed: " + last_des_speed  + "\n"
                 + " hex: " + data.readUInt8(10).toString(16) );
-             */
+
 
             client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
                     "timestamp": Date.now(),
@@ -281,7 +281,7 @@ function dataListener(data, isNotification, vehicle){
             let left_wheel_dist_cm = data.readUInt8(16);
             let right_wheel_dist_cm = data.readUInt8(17);
 
-            /*
+
             console.log("Vehicle ID " + vehicle.id + "\n"
                 + "Message_id: " + messageID + "\n"
                 + " road_piece_idx: " + road_piece_idx + "\n"
@@ -298,7 +298,7 @@ function dataListener(data, isNotification, vehicle){
                 + ' right_wheel_dist_cm: '  + right_wheel_dist_cm + "\n"
             );
 
-             */
+
 
             client.publish("Anki/Car/" + vehicle.id + "/S/TransitionInfo", JSON.stringify({
                     "timestamp": Date.now,
