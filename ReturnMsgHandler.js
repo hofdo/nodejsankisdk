@@ -264,8 +264,8 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
             client.publish("Anki/Car/" + vehicle.id + "/S/CarStatus", JSON.stringify({
                 "timestamp": Date.now(),
                 "online": true,
-                "charging": isOnTrack,
-                "onTrack": isCharging
+                "charging": isCharging,
+                "onTrack": isOnTrack
             }))
             break;
         default:

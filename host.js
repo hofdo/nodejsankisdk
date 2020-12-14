@@ -19,12 +19,12 @@ let message = null;
 let device_id = null;
 
 //Sets Interval for executing code all 5sec
+/*
 setInterval(function (){
-    client.publish("Anki/Host/' + hostID + '/S/HostStatus", JSON.stringify({
-        "timestamp": Date.now(),
-        "value": false
-    }))
-}, 5000);
+
+}, 10000);
+
+ */
 
 /**
  * Establish connection
