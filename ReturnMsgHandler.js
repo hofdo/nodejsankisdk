@@ -40,6 +40,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
 
             if (flag.toString(16) === "0x40") isReverse = true;
 
+            /*
             console.log("Vehicle ID: " + vehicle.id + "\n"
                 + " Message_id: " + messageID + "\n"
                 + ' offset: '  + offset_pos + "\n"
@@ -52,6 +53,8 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed + "\n"
                 + " last_des_speed: " + last_des_speed  + "\n" );
 
+             */
+
             client.publish("Anki/Car/" + vehicle.id + "/S/Lane/Actual", JSON.stringify({
                 "timestamp": Date.now(),
                 "value": offset_pos
@@ -62,7 +65,39 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 "value": speed
             }))
 
-            client.publish("Anki/Car/" + vehicle.id + "/S/PositionInfo", JSON.stringify({
+            client.publish("Anki/Car/" + vehicle.id + "/E/lane/offset/actual", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": offset_pos
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/lane/desired_lane_change_speed", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": pieceLocation
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/speed", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": speed
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/last_desired_speed", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": last_des_speed
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/track_piece_id", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": pieceId
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/track_location_id", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": pieceLocation
+            }))
+
+            /*
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/PositionInfo", JSON.stringify({
                     "timestamp": Date.now(),
                     "locationId": pieceLocation,
                     "roadPieceId": pieceId,
@@ -72,6 +107,8 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                     "lastDesSpeed": last_des_speed
                 }
             ));
+
+             */
             break;
         case 41:
             // ANKI_VEHICLE_MSG_V2C_LOCALIZATION_TRANSITION_UPDATE
@@ -88,6 +125,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
             let left_wheel_dist_cm = data.readUInt8(16);
             let right_wheel_dist_cm = data.readUInt8(17);
 
+            /*
             console.log("Vehicle ID " + vehicle.id + "\n"
                 + "Message_id: " + messageID + "\n"
                 + " road_piece_idx: " + road_piece_idx + "\n"
@@ -104,13 +142,59 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 + ' right_wheel_dist_cm: '  + right_wheel_dist_cm + "\n"
             );
 
-            client.publish("Anki/Car/" + vehicle.id + "/S/TransitionInfo", JSON.stringify({
+             */
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/lane/offset/actual", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": offset_trans
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/lane/desired_lane_change_speed", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": last_desired_lane_change_speed_mm_per_sec
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/ave_follow_line_drift_pixels", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": ave_follow_line_drift_pixels
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/had_lane_change_activity", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": had_lane_change_activity
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/uphill_counter", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": uphill_counter
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/downhill_counter", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": downhill_counter
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/left_wheel_dist_cm", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": left_wheel_dist_cm
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/right_wheel_dist_cm", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": right_wheel_dist_cm
+            }))
+
+            /*
+
+            client.publish("Anki/Car/" + vehicle.id + "/S/had_lane_change_activity", JSON.stringify({
                     "timestamp": Date.now,
                     "roadPieceId": road_piece_idx,
                     "prevRoadPieceId": road_piece_idx_prev,
                     "lane": offset_trans,
                 }
             ));
+
+             */
             break;
         case 42:
             //  ANKI_VEHICLE_MSG_V2C_LOCALIZATION_INTERSECTION_UPDATE
@@ -118,8 +202,10 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
             let offset = data.readFloatLE(3);
             let intersection_code = data.readUInt8(7);
             let is_exiting = data.readUInt8(8);
-            let mm_transition_bar = data.readUInt16LE(9);
-            let mm_intersection_code = data.readUInt16LE(11);
+            let mm_since_last_transition_bar = data.readUInt16LE(9);
+            let mm_since_last_intersection_code = data.readUInt16LE(11);
+
+            /*
 
             console.log(vehicle.id + "Message_id: "  + "\n"
                 + messageID + "\n"
@@ -129,13 +215,36 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 + " is_exiting: " + data.readUInt8(8) + "\n"
                 + " mm_transition_bar: " + data.readUInt16LE(9) + "\n"
                 + " mm_insection_code: " + data.readUInt16LE(11)); + "\n"
+             */
 
+            client.publish("Anki/Car/" + vehicle.id + "/E/lane/offset/actual", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": offset
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/intersection_code", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": intersection_code
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/mm_since_last_transition_bar", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": mm_since_last_transition_bar
+            }))
+
+            client.publish("Anki/Car/" + vehicle.id + "/E/mm_since_last_intersection_code", JSON.stringify({
+                "timestamp": Date.now(),
+                "value": mm_since_last_intersection_code
+            }))
+
+            /*
             client.publish("Anki/Car/" + vehicle.id + "/S/IntersectionInfo", JSON.stringify({
                     "timestamp": Date.now(),
                     "intersectionCode": intersection_code,
                     "isExiting": is_exiting
                 }
             ));
+             */
             break;
         case 43:
             // ANKI_VEHICLE_MSG_V2C_VEHICLE_DELOCALIZED
@@ -147,8 +256,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
         case 45:
             // ANKI_VEHICLE_MSG_V2C_OFFSET_FROM_ROAD_CENTER_UPDATE
             let offset_update = data.readFloatLE(2);
-            console.log("Message_ID: " + messageID + "\n"
-                + " Offset: " + offset_update)
+            
             break;
         case 63:
             let isOnTrack = data.readUInt8(2);

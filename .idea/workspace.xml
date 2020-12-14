@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Fixed Connection error">
+    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Changing Topic Structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReturnMsgHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/ReturnMsgHandler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/host.js" beforeDir="false" afterPath="$PROJECT_DIR$/host.js" afterDir="false" />
@@ -122,28 +122,7 @@
       <workItem from="1606992702935" duration="71188000" />
       <workItem from="1607599799256" duration="1821000" />
       <workItem from="1607683028914" duration="2036000" />
-      <workItem from="1607775461400" duration="5352000" />
-    </task>
-    <task id="LOCAL-00073" summary="Created host.js">
-      <created>1607443147220</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1607443147220</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Created host.js">
-      <created>1607443309473</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1607443309473</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Fleshed out the commands">
-      <created>1607464153607</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1607464153607</updated>
+      <workItem from="1607775461400" duration="14540000" />
     </task>
     <task id="LOCAL-00076" summary="Fleshed out the commands">
       <created>1607464308186</created>
@@ -467,7 +446,28 @@
       <option name="project" value="LOCAL" />
       <updated>1607548483636</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="Fixed Connection error">
+      <created>1607874559545</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1607874559545</updated>
+    </task>
+    <task id="LOCAL-00123" summary="Fixed Connection error">
+      <created>1607874921423</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1607874921423</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Changing Topic Structure">
+      <created>1607875293283</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1607875293283</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,7 +500,8 @@
     <MESSAGE value="Fleshed out the commands" />
     <MESSAGE value="Bugfixing" />
     <MESSAGE value="Fixed Connection error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Connection error" />
+    <MESSAGE value="Changing Topic Structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changing Topic Structure" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -90,13 +90,6 @@ client.on("message", function (topic, message){
     }
 });
 
-/**
- * Eventemitter Listener
- */
-
-eventEmitter.on('pingEvent', function (data) {
-    //console.log(data[0])
-})
 
 /**
  * Noble Listener
@@ -143,7 +136,6 @@ noble.on('discover', function (device){
  */
 
 function connect(device_id){
-    //let vehicle = noble._peripherals[device_id]
     let vehicle = vehicles[device_id]["device"];
     vehicle.connect(function(error) {
         vehicle.discoverSomeServicesAndCharacteristics(
