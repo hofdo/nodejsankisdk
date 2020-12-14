@@ -23,7 +23,7 @@ const handleCmd = (target, command, vehicles, client) => {
             }
             break;
         case "lane":
-            let offset = command["offset"];
+            let offset = command["lane"];
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
                     writer.write(getLaneMessage(key, offset));
