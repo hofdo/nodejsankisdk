@@ -1,10 +1,8 @@
 let message = "";
 let isGlobal = false;
-let writer = null;
 
 const handleCmd = (target, command, vehicles, client) => {
     if (target.toLowerCase() === 'global') isGlobal = true;
-    else writer = vehicles[target]['writer'];
     switch (Object.keys(command)[0]){
         case "acceleration":
         case "speed":
@@ -12,11 +10,11 @@ const handleCmd = (target, command, vehicles, client) => {
             let acceleration = command["acceleration"]
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                   writer.write(getSpeedMessage(key, speed, acceleration));
+                    vehicles[target]['writer'].write(getSpeedMessage(key, speed, acceleration));
                 })
             }
             else {
-                writer.write(getSpeedMessage(target, speed, acceleration));
+                vehicles[target]['writer'].write(getSpeedMessage(target, speed, acceleration));
                 client.publish("Anki/Car/" + target + "/S/Speed/Desired", JSON.stringify({
                     "timestamp": Date.now(),
                     "value": speed
@@ -27,11 +25,11 @@ const handleCmd = (target, command, vehicles, client) => {
             let offset = command["lane"];
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    writer.write(getLaneMessage(key, offset));
+                    vehicles[target]['writer'].write(getLaneMessage(key, offset));
                 })
             }
             else {
-                writer.write(getLaneMessage(target, offset));
+                vehicles[target]['writer'].write(getLaneMessage(target, offset));
                 client.publish("Anki/Car/" + target + "/S/Lane/Desired", JSON.stringify({
                     "timestamp": Date.now(),
                     "value": offset
@@ -43,10 +41,10 @@ const handleCmd = (target, command, vehicles, client) => {
             let turnTime = command["turn"]["time"];
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    writer.write(getTurnMessage(key, turnType, turnTime));
+                    vehicles[target]['writer'].write(getTurnMessage(key, turnType, turnTime));
                 })
             }
-            else writer.write(getTurnMessage(target, turnType, turnTime));
+            else vehicles[target]['writer'].write(getTurnMessage(target, turnType, turnTime));
             break;
         case "Light":
             let light = command["light"];
@@ -55,27 +53,27 @@ const handleCmd = (target, command, vehicles, client) => {
             let battery = command["battery"];
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    writer.write(getBatteryLevelMessage(key));
+                    vehicles[target]['writer'].write(getBatteryLevelMessage(key));
                 })
             }
-            else writer.write(getBatteryLevelMessage(target));
+            else vehicles[target]['writer'].write(getBatteryLevelMessage(target));
             break;
         case "version":
             let version = command["version"];
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    writer.write(getVersionMessage(key));
+                    vehicles[target]['writer'].write(getVersionMessage(key));
                 })
             }
-            else writer.write(getVersionMessage(target));
+            else vehicles[target]['writer'].write(getVersionMessage(target));
             break;
         case "ping":
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    writer.write(getPingMessage(key));
+                    vehicles[target]['writer'].write(getPingMessage(key));
                 })
             }
-            else writer.write(getPingMessage(target));
+            else vehicles[target]['writer'].write(getPingMessage(target));
             break;
         default:
             break;
