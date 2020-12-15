@@ -10,6 +10,7 @@ const handleCmd = (target, command, vehicles, client) => {
             let acceleration = command["acceleration"]
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
+                    console.log(key);
                     vehicles[key]['writer'].write(getSpeedMessage(key, speed, acceleration));
                 })
             }
