@@ -10,7 +10,7 @@ const handleCmd = (target, command, vehicles, client) => {
             let acceleration = command["acceleration"]
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    vehicles[target]['writer'].write(getSpeedMessage(key, speed, acceleration));
+                    vehicles[key]['writer'].write(getSpeedMessage(key, speed, acceleration));
                 })
             }
             else {
@@ -25,7 +25,7 @@ const handleCmd = (target, command, vehicles, client) => {
             let offset = command["lane"];
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    vehicles[target]['writer'].write(getLaneMessage(key, offset));
+                    vehicles[key]['writer'].write(getLaneMessage(key, offset));
                 })
             }
             else {
@@ -41,7 +41,7 @@ const handleCmd = (target, command, vehicles, client) => {
             let turnTime = command["turn"]["time"];
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    vehicles[target]['writer'].write(getTurnMessage(key, turnType, turnTime));
+                    vehicles[key]['writer'].write(getTurnMessage(key, turnType, turnTime));
                 })
             }
             else vehicles[target]['writer'].write(getTurnMessage(target, turnType, turnTime));
@@ -53,7 +53,7 @@ const handleCmd = (target, command, vehicles, client) => {
             let battery = command["battery"];
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    vehicles[target]['writer'].write(getBatteryLevelMessage(key));
+                    vehicles[key]['writer'].write(getBatteryLevelMessage(key));
                 })
             }
             else vehicles[target]['writer'].write(getBatteryLevelMessage(target));
@@ -62,7 +62,7 @@ const handleCmd = (target, command, vehicles, client) => {
             let version = command["version"];
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    vehicles[target]['writer'].write(getVersionMessage(key));
+                    vehicles[key]['writer'].write(getVersionMessage(key));
                 })
             }
             else vehicles[target]['writer'].write(getVersionMessage(target));
@@ -70,7 +70,7 @@ const handleCmd = (target, command, vehicles, client) => {
         case "ping":
             if (isGlobal) {
                 Object.keys(vehicles).forEach(function (key){
-                    vehicles[target]['writer'].write(getPingMessage(key));
+                    vehicles[key]['writer'].write(getPingMessage(key));
                 })
             }
             else vehicles[target]['writer'].write(getPingMessage(target));
