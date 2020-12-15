@@ -10,7 +10,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
             break;
         case 25:
             // Version received
-            let version = data.readUInt16(2);
+            let version = data.readUInt16LE(2);
             client.publish("Anki/Car/" + vehicle.id + "/S/Version", JSON.stringify({
                     "timestamp": Date.now,
                     "value": version
@@ -19,7 +19,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
             break;
         case 27:
             // Battery Level received
-            let level = data.readUInt16(2);
+            let level = data.readUInt16LE(2);
             client.publish("Anki/Car/" + vehicle.id + "/S/BatteryLevel", JSON.stringify({
                     "timestamp": Date.now,
                     "value": level
