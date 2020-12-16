@@ -40,7 +40,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
 
             if (flag.toString(16) === "0x40") isReverse = true;
 
-            /*
+
             console.log("Vehicle ID: " + vehicle.id + "\n"
                 + " Message_id: " + messageID + "\n"
                 + ' offset: '  + offset_pos + "\n"
@@ -53,7 +53,6 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed + "\n"
                 + " last_des_speed: " + last_des_speed  + "\n" );
 
-             */
 
             client.publish("Anki/Car/" + vehicle.id + "/S/Lane/Actual", JSON.stringify({
                 "timestamp": Date.now(),
@@ -95,7 +94,6 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 "value": pieceLocation
             }))
 
-            /*
 
             client.publish("Anki/Car/" + vehicle.id + "/E/PositionInfo", JSON.stringify({
                     "timestamp": Date.now(),
@@ -108,7 +106,6 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 }
             ));
 
-             */
             break;
         case 41:
             // ANKI_VEHICLE_MSG_V2C_LOCALIZATION_TRANSITION_UPDATE
@@ -125,7 +122,6 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
             let left_wheel_dist_cm = data.readUInt8(16);
             let right_wheel_dist_cm = data.readUInt8(17);
 
-            /*
             console.log("Vehicle ID " + vehicle.id + "\n"
                 + "Message_id: " + messageID + "\n"
                 + " road_piece_idx: " + road_piece_idx + "\n"
@@ -142,7 +138,6 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 + ' right_wheel_dist_cm: '  + right_wheel_dist_cm + "\n"
             );
 
-             */
 
             client.publish("Anki/Car/" + vehicle.id + "/E/lane/offset/actual", JSON.stringify({
                 "timestamp": Date.now(),
@@ -205,7 +200,6 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
             let mm_since_last_transition_bar = data.readUInt16LE(9);
             let mm_since_last_intersection_code = data.readUInt16LE(11);
 
-            /*
 
             console.log(vehicle.id + "Message_id: "  + "\n"
                 + messageID + "\n"
@@ -215,7 +209,6 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 + " is_exiting: " + data.readUInt8(8) + "\n"
                 + " mm_transition_bar: " + data.readUInt16LE(9) + "\n"
                 + " mm_insection_code: " + data.readUInt16LE(11)); + "\n"
-             */
 
             client.publish("Anki/Car/" + vehicle.id + "/E/lane/offset/actual", JSON.stringify({
                 "timestamp": Date.now(),

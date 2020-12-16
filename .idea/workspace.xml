@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Changing Topic Structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CmdHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/CmdHandler.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,28 +121,7 @@
       <workItem from="1607599799256" duration="1821000" />
       <workItem from="1607683028914" duration="2036000" />
       <workItem from="1607775461400" duration="14540000" />
-      <workItem from="1607955988312" duration="6627000" />
-    </task>
-    <task id="LOCAL-00080" summary="Fleshed out the commands">
-      <created>1607464927929</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1607464927929</updated>
-    </task>
-    <task id="LOCAL-00081" summary="Fleshed out the commands">
-      <created>1607465107510</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1607465107510</updated>
-    </task>
-    <task id="LOCAL-00082" summary="Fleshed out the commands">
-      <created>1607478566414</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1607478566414</updated>
+      <workItem from="1607955988312" duration="7255000" />
     </task>
     <task id="LOCAL-00083" summary="Fleshed out the commands">
       <created>1607479224663</created>
@@ -467,7 +445,28 @@
       <option name="project" value="LOCAL" />
       <updated>1608031630253</updated>
     </task>
-    <option name="localTasksCounter" value="129" />
+    <task id="LOCAL-00129" summary="Changing Topic Structure">
+      <created>1608036231643</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1608036231643</updated>
+    </task>
+    <task id="LOCAL-00130" summary="Changing Topic Structure">
+      <created>1608036548385</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1608036548385</updated>
+    </task>
+    <task id="LOCAL-00131" summary="Changing Topic Structure">
+      <created>1608036794616</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1608036794617</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
