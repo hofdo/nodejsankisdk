@@ -40,7 +40,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
 
             if (flag.toString(16) === "0x40") isReverse = true;
 
-            /*
+
             console.log("Vehicle ID: " + vehicle.id + "\n"
                 + " Message_id: " + messageID + "\n"
                 + ' offset: '  + offset_pos + "\n"
@@ -52,8 +52,6 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 + " last_exe_lane_change_cmd: " + last_exe_lane_change_cmd_id + "\n"
                 + " last_des_lane_change_speed: " + last_des_lane_change_speed + "\n"
                 + " last_des_speed: " + last_des_speed  + "\n" );
-
-             */
 
 
             client.publish("Anki/Car/" + vehicle.id + "/S/Lane/Actual", JSON.stringify({
@@ -124,7 +122,6 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
             let left_wheel_dist_cm = data.readUInt8(16);
             let right_wheel_dist_cm = data.readUInt8(17);
 
-            /*
             console.log("Vehicle ID " + vehicle.id + "\n"
                 + "Message_id: " + messageID + "\n"
                 + " road_piece_idx: " + road_piece_idx + "\n"
@@ -140,8 +137,6 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 + ' left_wheel_dist_cm: '  + left_wheel_dist_cm + "\n"
                 + ' right_wheel_dist_cm: '  + right_wheel_dist_cm + "\n"
             );
-
-             */
 
 
             client.publish("Anki/Car/" + vehicle.id + "/E/lane/offset/actual", JSON.stringify({
