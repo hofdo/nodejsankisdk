@@ -1,33 +1,53 @@
+/*
+This function handles all the messages that are returned by the cars
+ */
+
 const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
     let messageID = data.readUInt8(1);
     let isReverse = false;
 
     switch (messageID){
         case 23:
-            // Ping Responses
-            //eventEmitter.emit('pingEvent', "Hello");
-            console.log(messageID);
+            /*
+            Ping Response
+             */
+            client.publish("Anki/Car/" + vehicle.id + "/S/PingResp", JSON.stringify({
+                    "timestamp": Date.now
+                }
+            ), {
+                "retain": true,
+                "qos": 1
+            });
             break;
         case 25:
-            // Version received
+            /*
+            Version Response
+             */
             let version = data.readUInt16LE(2);
             client.publish("Anki/Car/" + vehicle.id + "/S/Version", JSON.stringify({
                     "timestamp": Date.now,
                     "value": version
                 }
-            ));
+            ), {
+                "retain": true,
+                "qos": 1
+            });
             break;
         case 27:
-            // Battery Level received
+            /*
+            Battery Status Response
+             */
             let level = data.readUInt16LE(2);
             client.publish("Anki/Car/" + vehicle.id + "/S/BatteryLevel", JSON.stringify({
                     "timestamp": Date.now,
                     "value": level
                 }
-            ));
+            ), {
+                "retain": true,
+                "qos": 1
+            });
             break;
         case 39:
-            // ANKI_VEHICLE_MSG_V2C_LOCALIZATION_POSITION_UPDATE
             let pieceLocation = data.readUInt8(2);
             let pieceId = data.readUInt8(3);
             let offset_pos = data.readFloatLE(4);
@@ -57,12 +77,18 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
             client.publish("Anki/Car/" + vehicle.id + "/S/Lane/Actual", JSON.stringify({
                 "timestamp": Date.now(),
                 "value": offset_pos
-            }))
+            }), {
+                "retain": true,
+                "qos": 1
+            })
 
             client.publish("Anki/Car/" + vehicle.id + "/S/Speed/Actual", JSON.stringify({
                 "timestamp": Date.now(),
                 "value": speed
-            }))
+            }), {
+                "retain": true,
+                "qos": 1
+            })
 
             client.publish("Anki/Car/" + vehicle.id + "/E/lane/offset/actual", JSON.stringify({
                 "timestamp": Date.now(),
@@ -93,22 +119,8 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 "timestamp": Date.now(),
                 "value": pieceLocation
             }))
-
-
-            client.publish("Anki/Car/" + vehicle.id + "/E/PositionInfo", JSON.stringify({
-                    "timestamp": Date.now(),
-                    "locationId": pieceLocation,
-                    "roadPieceId": pieceId,
-                   // "reverse": isReverse,
-                    "lane": offset_pos,
-                    "speed": speed,
-                    "lastDesSpeed": last_des_speed
-                }
-            ));
-
             break;
         case 41:
-            // ANKI_VEHICLE_MSG_V2C_LOCALIZATION_TRANSITION_UPDATE
             let road_piece_idx = data.readInt8(2);
             let road_piece_idx_prev = data.readInt8(3);
             let offset_trans = data.readFloatLE(4);
@@ -178,21 +190,8 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 "timestamp": Date.now(),
                 "value": right_wheel_dist_cm
             }))
-
-            /*
-
-            client.publish("Anki/Car/" + vehicle.id + "/S/had_lane_change_activity", JSON.stringify({
-                    "timestamp": Date.now,
-                    "roadPieceId": road_piece_idx,
-                    "prevRoadPieceId": road_piece_idx_prev,
-                    "lane": offset_trans,
-                }
-            ));
-
-             */
             break;
         case 42:
-            //  ANKI_VEHICLE_MSG_V2C_LOCALIZATION_INTERSECTION_UPDATE
             let road_piece_idx_intersection = data.readInt8(2);
             let offset = data.readFloatLE(3);
             let intersection_code = data.readUInt8(7);
@@ -229,25 +228,14 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 "timestamp": Date.now(),
                 "value": mm_since_last_intersection_code
             }))
-
-            /*
-            client.publish("Anki/Car/" + vehicle.id + "/S/IntersectionInfo", JSON.stringify({
-                    "timestamp": Date.now(),
-                    "intersectionCode": intersection_code,
-                    "isExiting": is_exiting
-                }
-            ));
-             */
             break;
         case 43:
-            // ANKI_VEHICLE_MSG_V2C_VEHICLE_DELOCALIZED
             client.publish("Anki/Car/" + vehicle.id + "/E/Delocalized", JSON.stringify({
                     "timestamp": Date.now()
                 }
             ));
             break;
         case 45:
-            // ANKI_VEHICLE_MSG_V2C_OFFSET_FROM_ROAD_CENTER_UPDATE
             let offset_update = data.readFloatLE(2);
             
             break;
@@ -259,10 +247,13 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 "online": true,
                 "charging": isCharging,
                 "onTrack": isOnTrack
-            }))
+            }), {
+                "retain": true,
+                "qos": 1
+            })
             break;
         default:
-            // Not definded
+            //Not definded :/ pls ignore thx
             break;
     }
 }

@@ -1,6 +1,10 @@
 let message = "";
 let isGlobal = false;
 
+/*
+This functions handles the commands from the Intents and returns the message that will be send to the car
+ */
+
 const handleCmd = (target, command, vehicles, client) => {
     if (target.toLowerCase() === 'global') isGlobal = true;
     switch (Object.keys(command)[0]){
@@ -19,7 +23,10 @@ const handleCmd = (target, command, vehicles, client) => {
                 client.publish("Anki/Car/" + target + "/S/Speed/Desired", JSON.stringify({
                     "timestamp": Date.now(),
                     "value": speed
-                }))
+                }), {
+                    "retain": true,
+                    "qos": 1
+                })
             }
             break;
         case "lane":
@@ -34,7 +41,10 @@ const handleCmd = (target, command, vehicles, client) => {
                 client.publish("Anki/Car/" + target + "/S/Lane/Desired", JSON.stringify({
                     "timestamp": Date.now(),
                     "value": offset
-                }))
+                }), {
+                    "retain": true,
+                    "qos": 1
+                })
             }
             break;
         case "turn":
@@ -82,7 +92,7 @@ const handleCmd = (target, command, vehicles, client) => {
 }
 
 /**
- *
+ * This function sets the message, so that the car changes its speed
  * @param device_id
  * @param speed
  * @param accel
@@ -99,7 +109,7 @@ function getSpeedMessage(device_id, speed, accel){
 }
 
 /**
- *
+ * This function sets the message, so that the car changes to the desired lane
  * @param device_id
  * @param offset
  */
@@ -116,7 +126,7 @@ function getLaneMessage(device_id, offset){
 }
 
 /**
- *
+ * This function sets the message, so that the car sends its current offset value
  * @param device_id
  * @param offset
  */
@@ -131,7 +141,7 @@ function getOffsetFromCenterMessage(device_id, offset){
 }
 
 /**
- *
+ * This function sets the message, so that the car executes a turn based on the given parameters
  * @param key
  */
 
@@ -146,7 +156,7 @@ function getTurnMessage(device_id, type, time) {
 }
 
 /**
- *
+ * This function sets the message, so that the car changes its lights
  * @param device_id
  */
 
@@ -160,7 +170,7 @@ function getChangeLightsMessage(device_id){
 }
 
 /**
- *
+ * This function sets the message, so that the car changes its light pattern
  * @param device_id
  */
 
@@ -178,7 +188,7 @@ function getChangeLightsPatternMessage(device_id){
 }
 
 /**
- *
+ * This Function sets the message, so that the car will respond on a ping message send to him
  * @param device_id
  */
 
@@ -191,7 +201,7 @@ function getPingMessage(device_id){
 }
 
 /**
- *
+ * This function sets the message, so that the car sends it current battery level back
  * @param device_id
  */
 
@@ -204,7 +214,7 @@ function getBatteryLevelMessage(device_id){
 }
 
 /**
- *
+ * This function sets the message, so that the car sends it current firmware version back
  * @param device_id
  */
 

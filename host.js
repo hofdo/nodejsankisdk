@@ -18,14 +18,6 @@ let cars = [];
 let message = null;
 let device_id = null;
 
-//Sets Interval for executing code all 5sec
-/*
-setInterval(function (){
-
-}, 10000);
-
- */
-
 /**
  * Establish connection
  * @type {MqttClient}
@@ -38,10 +30,10 @@ let client = mqtt.connect('mqtt://192.168.1.160', {
     will: {
         topic: 'Anki/Host/' + hostID + '/S/HostStatus',
         payload: JSON.stringify({
-            "value": true
+            "value": false
         }),
         retain: true,
-        qos: 0
+        qos: 1
     }
 });
 
@@ -50,6 +42,12 @@ let client = mqtt.connect('mqtt://192.168.1.160', {
  */
 
 client.on("connect", function (){
+    client.publish('Anki/Host/' + hostID + '/S/HostStatus', JSON.stringify({
+        "value": true
+    }), {
+        "retain": true,
+        "qos": 1
+    })
     client.subscribe("Anki/Host/" + hostID + "/I/#");
     client.subscribe("Anki/Car/+/I/#");
     client.subscribe("Anki/Car/I");
@@ -72,7 +70,10 @@ client.on("message", function (topic, message){
                     payload.push(key);
                     connect(key)
                 })
-                client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(payload), {});
+                client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(payload), {
+                    "retain": true,
+                    "qos": 1
+                });
             }, 2000);
         } else {
             Object.keys(vehicles).forEach(function (key){
@@ -115,7 +116,8 @@ noble.on('discover', function (device){
     client.publish("Anki/Car/" + device.id + "/S/DiscoveryTime", JSON.stringify({
         "timestamp": Date.now(),
     }), {
-
+        "retain": true,
+        "qos": 1
     })
     let manufacturerData = device.advertisement.manufacturerData;
     client.publish("Anki/Car/" + device.id + "/S/Information", JSON.stringify({
@@ -125,13 +127,14 @@ noble.on('discover', function (device){
         "modelId": manufacturerData.readUInt8(4),
         "productId": manufacturerData.readUInt16LE(6)
     }), {
-
+        "retain": true,
+        "qos": 1
     })
 
 });
 
 /**
- *
+ *  Function for establishing connection to BLE Devices
  * @param device_id
  */
 
@@ -163,7 +166,7 @@ function connect(device_id){
 }
 
 /**
- *
+ * Function for disconnecting BLE Devices
  * @param device_id
  */
 

@@ -1,3 +1,6 @@
+/*
+This function identifies what kind of model is connected to the master
+ */
 
 const getModel = (model_id) => {
     let model_name = "";

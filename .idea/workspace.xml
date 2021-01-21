@@ -19,8 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Changing Topic Structure">
+    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Creating Backup Branch for this version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CmdHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/CmdHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReturnMsgHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/ReturnMsgHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/host.js" beforeDir="false" afterPath="$PROJECT_DIR$/host.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.js" beforeDir="false" afterPath="$PROJECT_DIR$/models.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mqtt_client.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mqtt_client.js.save" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +42,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="backup" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -58,7 +70,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -502,7 +514,8 @@
     <MESSAGE value="Bugfixing" />
     <MESSAGE value="Fixed Connection error" />
     <MESSAGE value="Changing Topic Structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changing Topic Structure" />
+    <MESSAGE value="Creating Backup Branch for this version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating Backup Branch for this version" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
