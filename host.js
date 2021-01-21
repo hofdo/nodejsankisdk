@@ -18,14 +18,6 @@ let cars = [];
 let message = null;
 let device_id = null;
 
-//Sets Interval for executing code all 5sec
-/*
-setInterval(function (){
-
-}, 10000);
-
- */
-
 /**
  * Establish connection
  * @type {MqttClient}
