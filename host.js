@@ -59,6 +59,9 @@ client.on("message", function (topic, message){
     let msg = JSON.parse(message.toString());
     let topicSep = topic.split("/");
     if ( RegExp("Anki[\/]Host[\/]" + hostID +"[\/]I").test(topic)) {
+
+        console.log(Object.keys(msg))
+
         let connecting = msg["connecting"];
         if (connecting) {
             //scan and connect
@@ -88,11 +91,6 @@ client.on("message", function (topic, message){
         handleCmd(topicSep[2], msg, vehicles, client);
     } else if (RegExp("Anki[\/]Car[\/]I").test(topic)) {
         handleCmd("global", msg, vehicles, client);
-    } else if (RegExp("Anki[\/]Host[\/]" + hostID + "[\/]I[\/]Cars").test(topic)) {
-        client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(cars), {
-            "retain": true,
-            "qos": 1
-        });
     }
     else {
 
