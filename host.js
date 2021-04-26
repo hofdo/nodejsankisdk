@@ -174,6 +174,12 @@ function connect(device_id){
                 message.writeUInt8(0x01, 3);
                 vehicle.writer.write(message, true);
                 console.log("connect success");
+                client.publish("Anki/Host/" + hostID + "/E/CarConnected", JSON.stringify({
+                    "timestamp": Date.now(),
+                    "Car": device_id
+                }), {
+
+                })
                 cars.push(device_id);
             }
         );
