@@ -189,9 +189,10 @@ function connect(device_id){
 function disconnect(device_id){
     vehicles[device_id]['device'].disconnect();
     vehicles[device_id]['connected'] = false;
-    cars.filter(car => {
-        return car === device_id
-    })
+    let index = cars.indexOf(device_id)
+    if (index > -1) cars.splice(index, 1)
     console.log('Disconnected successfully!')
 }
+
+
 
