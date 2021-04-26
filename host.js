@@ -23,7 +23,7 @@ let device_id = null;
  * @type {MqttClient}
  */
 
-let client = mqtt.connect('mqtt://192.168.1.160', {
+let client = mqtt.connect('mqtt://192.168.1.121', {
     clientId: connectionID,
     protocolId: 'MQIsdp',
     protocolVersion: 3,
