@@ -61,7 +61,6 @@ client.on("message", function (topic, message){
     if ( RegExp("Anki[\/]Host[\/]" + hostID +"[\/]I").test(topic)) {
 
         let cmd = Object.keys(msg)
-        console.log(cmd)
         switch (cmd.toString()) {
             case "connecting":
                 let connecting = msg["connecting"];
@@ -84,10 +83,11 @@ client.on("message", function (topic, message){
                 } else {
                     Object.keys(vehicles).forEach(function (key){
                         disconnect(key);
-                        client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({
-
-                        }), {});
                     })
+                    cars = []
+                    client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({
+
+                    }), {});
                 }
                 break
             case "cars":
@@ -189,8 +189,6 @@ function connect(device_id){
 function disconnect(device_id){
     vehicles[device_id]['device'].disconnect();
     vehicles[device_id]['connected'] = false;
-    let index = cars.indexOf(device_id)
-    if (index > -1) cars.splice(index, 1)
     console.log('Disconnected successfully!')
 }
 
