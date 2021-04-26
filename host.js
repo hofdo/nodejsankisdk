@@ -61,8 +61,8 @@ client.on("message", function (topic, message){
     if ( RegExp("Anki[\/]Host[\/]" + hostID +"[\/]I").test(topic)) {
 
         let cmd = Object.keys(msg)
-
-        switch (cmd) {
+        console.log(cmd)
+        switch (cmd.toString()) {
             case "connecting":
                 console.log("connect")
                 break
