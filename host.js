@@ -195,6 +195,12 @@ function disconnect(device_id){
     vehicles[device_id]['device'].disconnect();
     vehicles[device_id]['connected'] = false;
     console.log('Disconnected successfully!')
+    client.publish("Anki/Host/" + hostID + "/E/CarDisconnected", JSON.stringify({
+        "timestamp": Date.now(),
+        "Car": device_id
+    }), {
+
+    })
 }
 
 
