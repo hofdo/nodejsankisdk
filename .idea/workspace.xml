@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Final Commit for Review">
+    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Extended MQTT Topic structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReturnMsgHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/ReturnMsgHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/host.js" beforeDir="false" afterPath="$PROJECT_DIR$/host.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,14 +133,7 @@
       <workItem from="1615380240272" duration="118000" />
       <workItem from="1615380432846" duration="963000" />
       <workItem from="1618843551980" duration="2454000" />
-      <workItem from="1619025946443" duration="12161000" />
-    </task>
-    <task id="LOCAL-00087" summary="Fleshed out the commands">
-      <created>1607481286821</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1607481286821</updated>
+      <workItem from="1619025946443" duration="13504000" />
     </task>
     <task id="LOCAL-00088" summary="Fleshed out the commands">
       <created>1607481377565</created>
@@ -478,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611249233352</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="Extended MQTT Topic structure">
+      <created>1619396473910</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1619396473911</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,7 +514,8 @@
     <MESSAGE value="Changing Topic Structure" />
     <MESSAGE value="Creating Backup Branch for this version" />
     <MESSAGE value="Final Commit for Review" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final Commit for Review" />
+    <MESSAGE value="Extended MQTT Topic structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extended MQTT Topic structure" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

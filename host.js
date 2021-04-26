@@ -58,7 +58,7 @@ client.on("error",function(error){ console.log("Can't connect"+error)});
 client.on("message", function (topic, message){
     let msg = JSON.parse(message.toString());
     let topicSep = topic.split("/");
-    if ( RegExp("Anki[\/]Host[\/]host[\/]I").test(topic)) {
+    if ( RegExp("Anki[\/]Host[\/]" + hostID +"[\/]I").test(topic)) {
         let connecting = msg["connecting"];
         if (connecting) {
             //scan and connect
@@ -68,6 +68,7 @@ client.on("message", function (topic, message){
                 let payload = [];
                 Object.keys(vehicles).forEach(function (key){
                     payload.push(key);
+                    cars.push(key)
                     connect(key)
                 })
                 client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(payload), {
@@ -87,7 +88,14 @@ client.on("message", function (topic, message){
         handleCmd(topicSep[2], msg, vehicles, client);
     } else if (RegExp("Anki[\/]Car[\/]I").test(topic)) {
         handleCmd("global", msg, vehicles, client);
-    } else {
+    } else if (RegExp("Anki[\/]Host[\/]" + hostID + "[\/]I[\/]Cars").test(topic)) {
+        client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(cars), {
+            "retain": true,
+            "qos": 1
+        });
+    }
+    else {
+
     }
 });
 
@@ -173,6 +181,9 @@ function connect(device_id){
 function disconnect(device_id){
     vehicles[device_id]['device'].disconnect();
     vehicles[device_id]['connected'] = false;
+    cars.filter(car => {
+        return car === device_id
+    })
     console.log('Disconnected successfully!')
 }
 
