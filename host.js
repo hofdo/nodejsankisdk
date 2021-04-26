@@ -64,37 +64,38 @@ client.on("message", function (topic, message){
         console.log(cmd)
         switch (cmd.toString()) {
             case "connecting":
-                console.log("connect")
+                let connecting = msg["connecting"];
+                if (connecting) {
+                    //scan and connect
+                    noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
+                    setTimeout(function (){
+                        noble.stopScanning();
+                        let payload = [];
+                        Object.keys(vehicles).forEach(function (key){
+                            payload.push(key);
+                            cars.push(key)
+                            connect(key)
+                        })
+                        client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(payload), {
+                            "retain": true,
+                            "qos": 1
+                        });
+                    }, 2000);
+                } else {
+                    Object.keys(vehicles).forEach(function (key){
+                        disconnect(key);
+                        client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({
+
+                        }), {});
+                    })
+                }
                 break
             case "cars":
-                console.log("cars")
-                break
-        }
-
-        let connecting = msg["connecting"];
-        if (connecting) {
-            //scan and connect
-            noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
-            setTimeout(function (){
-                noble.stopScanning();
-                let payload = [];
-                Object.keys(vehicles).forEach(function (key){
-                    payload.push(key);
-                    cars.push(key)
-                    connect(key)
-                })
-                client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(payload), {
+                client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(cars), {
                     "retain": true,
                     "qos": 1
                 });
-            }, 2000);
-        } else {
-            Object.keys(vehicles).forEach(function (key){
-                disconnect(key);
-                client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({
-
-                }), {});
-            })
+                break
         }
     } else if (RegExp("Anki[\/]Car[\/].*[\/]I").test(topic)) {
         handleCmd(topicSep[2], msg, vehicles, client);
