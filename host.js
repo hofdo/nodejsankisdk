@@ -72,7 +72,6 @@ client.on("message", function (topic, message){
                         let payload = [];
                         Object.keys(vehicles).forEach(function (key){
                             payload.push(key);
-                            cars.push(key)
                             connect(key)
                         })
                         client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify(payload), {
