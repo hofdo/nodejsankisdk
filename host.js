@@ -60,7 +60,16 @@ client.on("message", function (topic, message){
     let topicSep = topic.split("/");
     if ( RegExp("Anki[\/]Host[\/]" + hostID +"[\/]I").test(topic)) {
 
-        console.log(Object.keys(msg))
+        let cmd = Object.keys(msg)
+
+        switch (cmd) {
+            case "connecting":
+                console.log("connect")
+                break
+            case "cars":
+                console.log("cars")
+                break
+        }
 
         let connecting = msg["connecting"];
         if (connecting) {
