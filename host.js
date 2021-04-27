@@ -107,6 +107,7 @@ client.on("message", function (topic, message) {
 
 /**
  * Set up Interval
+ * Requests the version, battery status and a ping response from the connected devices in a 10sec interval
  */
 
 setInterval(function () {
@@ -124,8 +125,7 @@ setInterval(function () {
             }, vehicles, client);
         }
     })
-    console.log("5sec interval")
-}, 5000)
+}, 10000)
 
 /**
  * Noble Listener
