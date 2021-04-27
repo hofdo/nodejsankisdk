@@ -110,17 +110,16 @@ client.on("message", function (topic, message) {
  */
 
 setInterval(function () {
-    vehicles.forEach(vehicle => {
-        handleCmd("global", {
-            "version": true
-        }, vehicles, client);
-        handleCmd("global", {
-            "battery": true
-        }, vehicles, client);
-        handleCmd("global", {
-            "ping": true
-        }, vehicles, client);
-    })
+    handleCmd("global", {
+        "version": true
+    }, vehicles, client);
+    handleCmd("global", {
+        "battery": true
+    }, vehicles, client);
+    handleCmd("global", {
+        "ping": true
+    }, vehicles, client);
+    console.log("5sec interval")
 }, 5000)
 
 /**
