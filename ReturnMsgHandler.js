@@ -94,6 +94,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                     "flag": flag,
                     "pieceId": pieceId,
                     "pieceLocation": pieceLocation,
+                    "isReverse": isReverse,
                     "last_des_speed": last_des_speed,
                     "last_rec_lane_change_cmd": last_rec_lane_change_cmd_id,
                     "last_exe_lane_change_cmd": last_exe_lane_change_cmd_id,
