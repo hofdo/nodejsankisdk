@@ -40,7 +40,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
                 "qos": 1
             });
 
-            client.publish("Anki/Car/" + vehicle.id + "/E/Messages/ANKI_VEHICLE_MSG_V2C_PING_RESPONSE", JSON.stringify({
+            client.publish("Anki/Car/" + vehicle.id + "/E/Messages/ANKI_VEHICLE_MSG_V2C_VERSION_RESPONSE", JSON.stringify({
                     "message_id": 25,
                     "timestamp": Date.now,
                     "value": version

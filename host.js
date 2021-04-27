@@ -41,7 +41,7 @@ let client = mqtt.connect('mqtt://192.168.1.121', {
  * MQTT Listener
  */
 
-client.on("connect", function (){
+client.on("connect", function () {
     client.publish('Anki/Host/' + hostID + '/S/HostStatus', JSON.stringify({
         "value": true
     }), {
@@ -53,12 +53,14 @@ client.on("connect", function (){
     client.subscribe("Anki/Car/I");
 });
 
-client.on("error",function(error){ console.log("Can't connect"+error)});
+client.on("error", function (error) {
+    console.log("Can't connect" + error)
+});
 
-client.on("message", function (topic, message){
+client.on("message", function (topic, message) {
     let msg = JSON.parse(message.toString());
     let topicSep = topic.split("/");
-    if ( RegExp("Anki[\/]Host[\/]" + hostID +"[\/]I").test(topic)) {
+    if (RegExp("Anki[\/]Host[\/]" + hostID + "[\/]I").test(topic)) {
 
         let cmd = Object.keys(msg)
         switch (cmd.toString()) {
@@ -67,10 +69,10 @@ client.on("message", function (topic, message){
                 if (connecting) {
                     //scan and connect
                     noble.startScanning(['be15beef6186407e83810bd89c4d8df4']);
-                    setTimeout(function (){
+                    setTimeout(function () {
                         noble.stopScanning();
                         let payload = [];
-                        Object.keys(vehicles).forEach(function (key){
+                        Object.keys(vehicles).forEach(function (key) {
                             payload.push(key);
                             connect(key)
                         })
@@ -80,13 +82,11 @@ client.on("message", function (topic, message){
                         });
                     }, 2000);
                 } else {
-                    Object.keys(vehicles).forEach(function (key){
+                    Object.keys(vehicles).forEach(function (key) {
                         disconnect(key);
                     })
                     cars = []
-                    client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({
-
-                    }), {});
+                    client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({}), {});
                 }
                 break
             case "cars":
@@ -100,18 +100,34 @@ client.on("message", function (topic, message){
         handleCmd(topicSep[2], msg, vehicles, client);
     } else if (RegExp("Anki[\/]Car[\/]I").test(topic)) {
         handleCmd("global", msg, vehicles, client);
-    }
-    else {
+    } else {
 
     }
 });
 
+/**
+ * Set up Interval
+ */
+
+setInterval(function () {
+    vehicles.forEach(vehicle => {
+        handleCmd("global", {
+            "version": true
+        }, vehicles, client);
+        handleCmd("global", {
+            "battery": true
+        }, vehicles, client);
+        handleCmd("global", {
+            "ping": true
+        }, vehicles, client);
+    })
+}, 5000)
 
 /**
  * Noble Listener
  */
 
-noble.on('discover', function (device){
+noble.on('discover', function (device) {
     vehicles[device.id] = {
         'id': device.id,
         'device': noble._peripherals[device.id],
@@ -125,9 +141,7 @@ noble.on('discover', function (device){
     client.publish("Anki/Host/" + hostID + "/E/CarDiscovered", JSON.stringify({
         "timestamp": Date.now(),
         "Car": device.id
-    }), {
-
-    })
+    }), {})
     client.publish("Anki/Car/" + device.id + "/S/DiscoveryTime", JSON.stringify({
         "timestamp": Date.now(),
     }), {
@@ -153,13 +167,13 @@ noble.on('discover', function (device){
  * @param device_id
  */
 
-function connect(device_id){
+function connect(device_id) {
     let vehicle = vehicles[device_id]["device"];
-    vehicle.connect(function(error) {
+    vehicle.connect(function (error) {
         vehicle.discoverSomeServicesAndCharacteristics(
             ["be15beef6186407e83810bd89c4d8df4"],
             ["be15bee06186407e83810bd89c4d8df4", "be15bee16186407e83810bd89c4d8df4"],
-            function(error, services, characteristics) {
+            function (error, services, characteristics) {
                 vehicle.reader = characteristics[1];//.find(x => !x.properties.includes("write"));
                 vehicle.writer = characteristics[0];//.find(x => x.properties.includes("write"));
                 vehicles[device_id]['writer'] = characteristics[0];
@@ -177,9 +191,7 @@ function connect(device_id){
                 client.publish("Anki/Host/" + hostID + "/E/CarConnected", JSON.stringify({
                     "timestamp": Date.now(),
                     "Car": device_id
-                }), {
-
-                })
+                }), {})
                 cars.push(device_id);
             }
         );
@@ -191,16 +203,14 @@ function connect(device_id){
  * @param device_id
  */
 
-function disconnect(device_id){
+function disconnect(device_id) {
     vehicles[device_id]['device'].disconnect();
     vehicles[device_id]['connected'] = false;
     console.log('Disconnected successfully!')
     client.publish("Anki/Host/" + hostID + "/E/CarDisconnected", JSON.stringify({
         "timestamp": Date.now(),
         "Car": device_id
-    }), {
-
-    })
+    }), {})
 }
 
 
