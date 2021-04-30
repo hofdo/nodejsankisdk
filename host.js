@@ -94,6 +94,7 @@ client.on("message", function (topic, message) {
                         "retain": true,
                         "qos": 1
                     });
+
                 }
                 break
             case "cars":
@@ -232,11 +233,35 @@ function disconnect(device_id) {
     vehicles[device_id]['device'].disconnect();
     vehicles[device_id]['connected'] = false;
     console.log('Disconnected successfully!')
+    client.publish("Anki/Car/" + device_id + "/S/Information", JSON.stringify({
+        "address": "",
+        "identifier": "",
+        "model": "",
+        "modelId": "",
+        "productId": ""
+    }), {
+        "retain": true,
+        "qos": 1
+    })
     client.publish("Anki/Host/" + hostID + "/E/CarDisconnected", JSON.stringify({
         "timestamp": Date.now(),
         "Car": device_id
     }), {})
 }
+
+process.on('exit', code => {
+    console.log("exit")
+    process.exit()
+});
+
+//catches ctrl+c event
+process.on('SIGINT', code => {
+    console.log("CTRL+C")
+    Object.keys(vehicles).forEach(function (key) {
+        disconnect(key);
+    })
+    process.exit()
+});
 
 
 
