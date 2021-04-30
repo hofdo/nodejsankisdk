@@ -248,20 +248,13 @@ function disconnect(device_id) {
     console.log('Disconnected successfully!')
 }
 
-process.on('exit', code => {
-    console.log("exit")
-    process.exit()
-});
-
 //catches ctrl+c event
-process.on('SIGINT', code => {
+process.on('SIGINT', async code => {
     console.log("CTRL+C")
-    Object.keys(vehicles).forEach(function (key) {
+    await vehicles.forEach((value, key) => {
         disconnect(key);
     })
     process.exit()
-
-
 });
 
 
