@@ -223,7 +223,7 @@ function connect(device_id) {
  * @param device_id
  */
 
-function disconnect(device_id) {
+async function disconnect(device_id) {
     vehicles[device_id]['device'].disconnect();
     vehicles[device_id]['connected'] = false;
     console.log('Disconnected successfully!')
@@ -256,10 +256,14 @@ process.on('exit', code => {
 //catches ctrl+c event
 process.on('SIGINT', code => {
     console.log("CTRL+C")
+    let promise
     Object.keys(vehicles).forEach(function (key) {
-        disconnect(key);
+        promise = disconnect(key);
     })
-    process.exit()
+    promise.then(() => {
+        process.exit()
+    })
+
 });
 
 
