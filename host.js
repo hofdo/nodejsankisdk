@@ -48,6 +48,10 @@ client.on("connect", function () {
         "retain": true,
         "qos": 1
     })
+    client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({}), {
+        "retain": true,
+        "qos": 1
+    });
     client.subscribe("Anki/Host/" + hostID + "/I/#");
     client.subscribe("Anki/Car/+/I/#");
     client.subscribe("Anki/Car/I");
