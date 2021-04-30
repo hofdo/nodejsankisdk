@@ -223,10 +223,9 @@ function connect(device_id) {
  * @param device_id
  */
 
-async function disconnect(device_id) {
+function disconnect(device_id) {
     vehicles[device_id]['device'].disconnect();
     vehicles[device_id]['connected'] = false;
-    console.log('Disconnected successfully!')
     client.publish("Anki/Car/" + device_id + "/S/Information", JSON.stringify({
         "address": "",
         "identifier": "",
@@ -246,6 +245,7 @@ async function disconnect(device_id) {
         "timestamp": Date.now(),
         "Car": device_id
     }), {})
+    console.log('Disconnected successfully!')
 }
 
 process.on('exit', code => {
@@ -256,13 +256,11 @@ process.on('exit', code => {
 //catches ctrl+c event
 process.on('SIGINT', code => {
     console.log("CTRL+C")
-    let promise
     Object.keys(vehicles).forEach(function (key) {
-        promise = disconnect(key);
+        disconnect(key);
     })
-    promise.then(() => {
-        process.exit()
-    })
+    process.exit()
+
 
 });
 
