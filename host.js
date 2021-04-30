@@ -89,12 +89,6 @@ client.on("message", function (topic, message) {
                     Object.keys(vehicles).forEach(function (key) {
                         disconnect(key);
                     })
-                    cars = []
-                    client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({}), {
-                        "retain": true,
-                        "qos": 1
-                    });
-
                 }
                 break
             case "cars":
@@ -243,6 +237,11 @@ function disconnect(device_id) {
         "retain": true,
         "qos": 1
     })
+    cars = []
+    client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({}), {
+        "retain": true,
+        "qos": 1
+    });
     client.publish("Anki/Host/" + hostID + "/E/CarDisconnected", JSON.stringify({
         "timestamp": Date.now(),
         "Car": device_id
