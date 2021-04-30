@@ -86,7 +86,10 @@ client.on("message", function (topic, message) {
                         disconnect(key);
                     })
                     cars = []
-                    client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({}), {});
+                    client.publish("Anki/Host/" + hostID + "/S/Cars", JSON.stringify({}), {
+                        "retain": true,
+                        "qos": 1
+                    });
                 }
                 break
             case "cars":
@@ -94,6 +97,20 @@ client.on("message", function (topic, message) {
                     "retain": true,
                     "qos": 1
                 });
+                break
+            case "car_status":
+                Object.keys(vehicles).forEach(function (car_id){
+                    client.publish("Anki/Car/" + car_id + "/S/Information", JSON.stringify({
+                        "address": vehicles[car_id]["device"].address,
+                        "identifier": vehicles[car_id]["device"].advertisement.manufacturerData.readUInt32LE(0),
+                        "model": getModel(vehicles[car_id]["device"].advertisement.manufacturerData.readUInt8(4)),
+                        "modelId": vehicles[car_id]["device"].advertisement.manufacturerData.readUInt8(4),
+                        "productId": vehicles[car_id]["device"].advertisement.manufacturerData.readUInt16LE(6)
+                    }), {
+                        "retain": true,
+                        "qos": 1
+                    })
+                })
                 break
         }
     } else if (RegExp("Anki[\/]Car[\/].*[\/]I").test(topic)) {
