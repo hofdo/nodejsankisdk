@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Extended MQTT Topic structure">
+    <list default="true" id="c8ff1059-054b-442d-b225-a198bcdc15cc" name="Default Changelist" comment="Extended MQTT Topic structure / 24">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReturnMsgHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/ReturnMsgHandler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/host.js" beforeDir="false" afterPath="$PROJECT_DIR$/host.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,168 +134,12 @@
       <workItem from="1615380240272" duration="118000" />
       <workItem from="1615380432846" duration="963000" />
       <workItem from="1618843551980" duration="2454000" />
-      <workItem from="1619025946443" duration="13504000" />
-    </task>
-    <task id="LOCAL-00088" summary="Fleshed out the commands">
-      <created>1607481377565</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1607481377565</updated>
-    </task>
-    <task id="LOCAL-00089" summary="Fleshed out the commands">
-      <created>1607523885869</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1607523885869</updated>
-    </task>
-    <task id="LOCAL-00090" summary="Bugfixing">
-      <created>1607524360689</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1607524360689</updated>
-    </task>
-    <task id="LOCAL-00091" summary="Bugfixing">
-      <created>1607524470382</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1607524470382</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Bugfixing">
-      <created>1607524590053</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1607524590053</updated>
-    </task>
-    <task id="LOCAL-00093" summary="Bugfixing">
-      <created>1607524704592</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1607524704592</updated>
-    </task>
-    <task id="LOCAL-00094" summary="Fixed Connection error">
-      <created>1607525547158</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1607525547158</updated>
-    </task>
-    <task id="LOCAL-00095" summary="Fixed Connection error">
-      <created>1607526528482</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1607526528482</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Fixed Connection error">
-      <created>1607526805364</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1607526805364</updated>
-    </task>
-    <task id="LOCAL-00097" summary="Fixed Connection error">
-      <created>1607526956888</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1607526956889</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Fixed Connection error">
-      <created>1607527065839</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1607527065839</updated>
-    </task>
-    <task id="LOCAL-00099" summary="Fixed Connection error">
-      <created>1607529443710</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1607529443710</updated>
-    </task>
-    <task id="LOCAL-00100" summary="Fixed Connection error">
-      <created>1607529574258</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1607529574258</updated>
-    </task>
-    <task id="LOCAL-00101" summary="Fixed Connection error">
-      <created>1607533186087</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1607533186087</updated>
-    </task>
-    <task id="LOCAL-00102" summary="Fixed Connection error">
-      <created>1607533506461</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1607533506461</updated>
-    </task>
-    <task id="LOCAL-00103" summary="Fixed Connection error">
-      <created>1607533650685</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1607533650685</updated>
-    </task>
-    <task id="LOCAL-00104" summary="Fixed Connection error">
-      <created>1607534305789</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1607534305789</updated>
-    </task>
-    <task id="LOCAL-00105" summary="Fixed Connection error">
-      <created>1607534557030</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1607534557030</updated>
-    </task>
-    <task id="LOCAL-00106" summary="Fixed Connection error">
-      <created>1607534743235</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1607534743235</updated>
-    </task>
-    <task id="LOCAL-00107" summary="Fixed Connection error">
-      <created>1607534786715</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1607534786715</updated>
-    </task>
-    <task id="LOCAL-00108" summary="Fixed Connection error">
-      <created>1607539937177</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1607539937177</updated>
-    </task>
-    <task id="LOCAL-00109" summary="Fixed Connection error">
-      <created>1607540004145</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1607540004145</updated>
-    </task>
-    <task id="LOCAL-00110" summary="Fixed Connection error">
-      <created>1607540084026</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1607540084026</updated>
+      <workItem from="1619025946443" duration="39286000" />
+      <workItem from="1620030121263" duration="1661000" />
+      <workItem from="1620395951686" duration="9101000" />
+      <workItem from="1620980879847" duration="2250000" />
+      <workItem from="1621080060701" duration="1819000" />
+      <workItem from="1621157032602" duration="594000" />
     </task>
     <task id="LOCAL-00111" summary="Fixed Connection error">
       <created>1607540336313</created>
@@ -478,7 +323,168 @@
       <option name="project" value="LOCAL" />
       <updated>1619396473911</updated>
     </task>
-    <option name="localTasksCounter" value="137" />
+    <task id="LOCAL-00137" summary="Extended MQTT Topic structure / 2">
+      <created>1619427237903</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1619427237903</updated>
+    </task>
+    <task id="LOCAL-00138" summary="Extended MQTT Topic structure / 3">
+      <created>1619427711990</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1619427711990</updated>
+    </task>
+    <task id="LOCAL-00139" summary="Extended MQTT Topic structure / 4">
+      <created>1619429242709</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1619429242709</updated>
+    </task>
+    <task id="LOCAL-00140" summary="Extended MQTT Topic structure / 5">
+      <created>1619429428026</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1619429428027</updated>
+    </task>
+    <task id="LOCAL-00141" summary="Extended MQTT Topic structure / 6">
+      <created>1619429501711</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1619429501711</updated>
+    </task>
+    <task id="LOCAL-00142" summary="Extended MQTT Topic structure / 7">
+      <created>1619429582249</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1619429582249</updated>
+    </task>
+    <task id="LOCAL-00143" summary="Extended MQTT Topic structure / 8">
+      <created>1619436951538</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1619436951538</updated>
+    </task>
+    <task id="LOCAL-00144" summary="Extended MQTT Topic structure / 9">
+      <created>1619438144288</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1619438144289</updated>
+    </task>
+    <task id="LOCAL-00145" summary="Extended MQTT Topic structure / 10">
+      <created>1619438381789</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1619438381789</updated>
+    </task>
+    <task id="LOCAL-00146" summary="Extended MQTT Topic structure / 11">
+      <created>1619444637114</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1619444637114</updated>
+    </task>
+    <task id="LOCAL-00147" summary="Extended MQTT Topic structure / 12">
+      <created>1619444880332</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1619444880332</updated>
+    </task>
+    <task id="LOCAL-00148" summary="Extended MQTT Topic structure / 13">
+      <created>1619517153816</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1619517153816</updated>
+    </task>
+    <task id="LOCAL-00149" summary="Extended MQTT Topic structure / 14">
+      <created>1619517427697</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1619517427698</updated>
+    </task>
+    <task id="LOCAL-00150" summary="Extended MQTT Topic structure / 15">
+      <created>1619520353766</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1619520353766</updated>
+    </task>
+    <task id="LOCAL-00151" summary="Extended MQTT Topic structure / 16">
+      <created>1619520602834</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1619520602834</updated>
+    </task>
+    <task id="LOCAL-00152" summary="Extended MQTT Topic structure / 17">
+      <created>1619531853002</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1619531853002</updated>
+    </task>
+    <task id="LOCAL-00153" summary="Extended MQTT Topic structure / 18">
+      <created>1619770413978</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1619770413978</updated>
+    </task>
+    <task id="LOCAL-00154" summary="Extended MQTT Topic structure / 19">
+      <created>1619770817862</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1619770817862</updated>
+    </task>
+    <task id="LOCAL-00155" summary="Extended MQTT Topic structure / 20">
+      <created>1619772611583</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1619772611583</updated>
+    </task>
+    <task id="LOCAL-00156" summary="Extended MQTT Topic structure / 21">
+      <created>1619772696921</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1619772696921</updated>
+    </task>
+    <task id="LOCAL-00157" summary="Extended MQTT Topic structure / 22">
+      <created>1619772868535</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1619772868535</updated>
+    </task>
+    <task id="LOCAL-00158" summary="Extended MQTT Topic structure / 23">
+      <created>1619773363156</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1619773363156</updated>
+    </task>
+    <task id="LOCAL-00159" summary="Extended MQTT Topic structure / 24">
+      <created>1619773927468</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1619773927468</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,25 +503,32 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test" />
-    <MESSAGE value="Update Nodemodul" />
-    <MESSAGE value="Update Nodemodul 2" />
-    <MESSAGE value="Update app.js" />
-    <MESSAGE value="Test Run MQTT" />
-    <MESSAGE value="Test NodeRed" />
-    <MESSAGE value="cd n" />
-    <MESSAGE value="Update controller.js" />
-    <MESSAGE value="Testing Response codes" />
-    <MESSAGE value="Added Response code" />
-    <MESSAGE value="Created host.js" />
-    <MESSAGE value="Fleshed out the commands" />
-    <MESSAGE value="Bugfixing" />
-    <MESSAGE value="Fixed Connection error" />
-    <MESSAGE value="Changing Topic Structure" />
-    <MESSAGE value="Creating Backup Branch for this version" />
     <MESSAGE value="Final Commit for Review" />
     <MESSAGE value="Extended MQTT Topic structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extended MQTT Topic structure" />
+    <MESSAGE value="Extended MQTT Topic structure / 2" />
+    <MESSAGE value="Extended MQTT Topic structure / 3" />
+    <MESSAGE value="Extended MQTT Topic structure / 4" />
+    <MESSAGE value="Extended MQTT Topic structure / 5" />
+    <MESSAGE value="Extended MQTT Topic structure / 6" />
+    <MESSAGE value="Extended MQTT Topic structure / 7" />
+    <MESSAGE value="Extended MQTT Topic structure / 8" />
+    <MESSAGE value="Extended MQTT Topic structure / 9" />
+    <MESSAGE value="Extended MQTT Topic structure / 10" />
+    <MESSAGE value="Extended MQTT Topic structure / 11" />
+    <MESSAGE value="Extended MQTT Topic structure / 12" />
+    <MESSAGE value="Extended MQTT Topic structure / 13" />
+    <MESSAGE value="Extended MQTT Topic structure / 14" />
+    <MESSAGE value="Extended MQTT Topic structure / 15" />
+    <MESSAGE value="Extended MQTT Topic structure / 16" />
+    <MESSAGE value="Extended MQTT Topic structure / 17" />
+    <MESSAGE value="Extended MQTT Topic structure / 18" />
+    <MESSAGE value="Extended MQTT Topic structure / 19" />
+    <MESSAGE value="Extended MQTT Topic structure / 20" />
+    <MESSAGE value="Extended MQTT Topic structure / 21" />
+    <MESSAGE value="Extended MQTT Topic structure / 22" />
+    <MESSAGE value="Extended MQTT Topic structure / 23" />
+    <MESSAGE value="Extended MQTT Topic structure / 24" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extended MQTT Topic structure / 24" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

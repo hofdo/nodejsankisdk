@@ -11,7 +11,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
             /*
             Ping Response
              */
-            client.publish("Anki/Car/" + vehicle.id + "/S/PingResp", JSON.stringify({
+            client.publish("Anki/Car/" + vehicle.id + "/S/Ping_Response", JSON.stringify({
                     "timestamp": Date.now
                 }
             ), {
@@ -139,7 +139,7 @@ const handleReturnMsg = (data, isNot, vehicle, client, eventEmitter) => {
 
             client.publish("Anki/Car/" + vehicle.id + "/E/lane/desired_lane_change_speed", JSON.stringify({
                 "timestamp": Date.now(),
-                "value": pieceLocation
+                "value": last_des_lane_change_speed
             }))
 
             client.publish("Anki/Car/" + vehicle.id + "/E/speed", JSON.stringify({

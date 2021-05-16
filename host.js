@@ -248,6 +248,10 @@ function disconnect(device_id) {
     console.log('Disconnected successfully!')
 }
 
+process.on("exit", code => {
+    process.exit()
+})
+
 //catches ctrl+c event
 process.on('SIGINT', async code => {
     console.log("CTRL+C")
